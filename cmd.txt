@@ -1,0 +1,1 @@
+sencha -sdk E:\extjs\ext-6.5.1 generate app -classic MyKitchen
