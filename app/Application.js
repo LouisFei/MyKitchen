@@ -215,6 +215,12 @@ Ext.define('MyKitchen.Application', {
 
     
 }, function() {
+
+    /**
+     * 全局提示窗口
+     * 参数1：标题
+     * 参数2：内容 （若未提供参数2，则参数1作为内容，无标题）
+     */
     MyKitchen.toast = function (title) {
         var html = Ext.String.format.apply(String, Array.prototype.slice.call(arguments, 1));
 
