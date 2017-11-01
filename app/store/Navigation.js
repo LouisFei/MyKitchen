@@ -48,6 +48,7 @@ Ext.define('MyKitchen.store.Navigation', {
     },
 
     /**
+     * 主要是补足项的样式class，默认使用icon-{id}的规则。
      * This method is used to fill in missing fields (e.g. iconCls) and also to localize
      * the text and description fields if a translation is available.
      *
@@ -92,6 +93,9 @@ Ext.define('MyKitchen.store.Navigation', {
         }
     },
 
+    /**
+     * Calendar
+     */
     getNavItemsCalendar: function () {
         return {
             text: 'Calendar',
@@ -113,6 +117,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * Charts
+     */
     getNavItemsCharts: function () {
         return {
             text: 'Charts',
@@ -312,6 +319,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * D3
+     */
     getNavItemsD3: function () {
         return {
             text: 'D3',
@@ -378,6 +388,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * Components
+     */
     getNavItemsGeneral: function () {
         var me = this;
         return {
@@ -407,6 +420,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * Components/Buttons
+     */
     getNavItemsButtons: function () {
         return {
             text: 'Buttons',
@@ -430,6 +446,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * Components/Data Binding
+     */
     getNavItemsDataBinding: function () {
         return {
             text: 'Data Binding',
@@ -462,6 +481,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * DataView
+     */
     getNavItemsDataView: function () {
         return {
             text: 'DataView',
@@ -476,6 +498,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * Drag & Drop
+     */
     getNavItemsDragDrop: function () {
         // id: 'drag-drop-grid',
         // id: 'drag-drop-element',
@@ -499,6 +524,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * Ext Direct
+     */
     getNavItemsExtDirect: function () {
         return {
             text: 'Ext Direct',
@@ -517,6 +545,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * Enterprise
+     */
     getNavItemsEnterprise: function () {
         return {
             text: 'Enterprise',
@@ -532,6 +563,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * Form Fields
+     */
     getNavItemsFormFields: function () {
         return {
             text: 'Form Fields',
@@ -573,6 +607,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * Forms
+     */
     getNavItemsForms: function () {
         return {
             text: 'Forms',
@@ -600,6 +637,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * Gauges
+     */
     getNavItemsGauge: function () {
         return {
             text: 'Gauges',
@@ -617,6 +657,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * Layouts
+     */
     getNavItemsLayouts: function () {
         return {
             text: 'Layouts',
@@ -641,6 +684,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * Panels
+     */
     getNavItemsPanels: function () {
         return {
             text: 'Panels',
@@ -659,6 +705,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * Windows
+     */
     getNavItemsWindows: function () {
         return {
             text: 'Windows',
@@ -677,6 +726,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * Tabs
+     */
     getNavItemsTabs: function () {
         return {
             text: 'Tabs',
@@ -700,6 +752,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * Tooltips
+     */
     getNavItemsTips: function () {
         return {
             text: 'Tooltips',
@@ -721,6 +776,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * Toolbars
+     */
     getNavItemsToolbars: function () {
         return {
             text: 'Toolbars',
@@ -739,6 +797,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * Grids
+     */
     getNavItemsGrid: function () {
         return {
             text: 'Grids',
@@ -757,6 +818,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * Advanced Features
+     */
     getNavItemsGridAdvanced: function () {
         return {
             text: 'Advanced Features',
@@ -777,6 +841,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * Core Features
+     */
     getNavItemsGridBasic: function () {
         return {
             text: 'Core Features',
@@ -784,6 +851,8 @@ Ext.define('MyKitchen.store.Navigation', {
             iconCls: 'icon-grids',
 
             children: [
+                { id: 'simple-grid', text: 'Simple Grid', leaf: true },
+                { id: 'simple-grid2', text: 'Simple Grid2', leaf: true, iconCls: 'icon-direct-arg' },
                 { id: 'array-grid', text: 'Basic Grid', leaf: true },
                 { id: 'grouped-grid', text: 'Grouped Grid', leaf: true },
                 { id: 'checkbox-selection', text: 'Checkbox Selection Model', leaf: true },
@@ -800,6 +869,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * Add-ons and Decorations
+     */
     getNavItemsGridDecorations: function () {
         return {
             text: 'Add-ons and Decorations',
@@ -820,6 +892,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * Pivot Grids
+     */
     getNavItemsGridPivot: function () {
         return {
             text: 'Pivot Grids',
@@ -852,6 +927,9 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    /**
+     * Trees
+     */
     getNavItemsTrees: function () {
         return {
             text: 'Trees',

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Sencha-Examples';
-  src:  url('fonts/Sencha-Examples.eot?1ccqn9');
-  src:  url('fonts/Sencha-Examples.eot?1ccqn9#iefix') format('embedded-opentype'),
-    url('fonts/Sencha-Examples.ttf?1ccqn9') format('truetype'),
-    url('fonts/Sencha-Examples.woff?1ccqn9') format('woff'),
-    url('fonts/Sencha-Examples.svg?1ccqn9#Sencha-Examples') format('svg');
+  src:  url('fonts/Sencha-Examples.eot?iutmj8');
+  src:  url('fonts/Sencha-Examples.eot?iutmj8#iefix') format('embedded-opentype'),
+    url('fonts/Sencha-Examples.ttf?iutmj8') format('truetype'),
+    url('fonts/Sencha-Examples.woff?iutmj8') format('woff'),
+    url('fonts/Sencha-Examples.svg?iutmj8#Sencha-Examples') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -23,13 +23,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-simple-grid:before {
+  content: "\e995";
+}
 .icon-cell-overflow-grid:before {
   content: "\e992";
 }
 .icon-overflow-tabs:before {
   content: "\e993";
 }
-.icon-toolbar-overflow:before {
+.icon-toolbar-overflow2:before {
   content: "\e994";
 }
 .icon-line-real-time-date:before {
@@ -199,6 +202,138 @@
 }
 .icon-tree-decorations:before {
   content: "\e989";
+}
+.icon-row-editing:before {
+  content: "\e93a";
+}
+.icon-locked-pivot-grid:before {
+  content: "\e929";
+}
+.icon-d3-view-heatmap-purchases:before {
+  content: "\e939";
+}
+.icon-d3-view-heatmap-heatmap:before {
+  content: "\e913";
+}
+.icon-d3-heatmap:before {
+  content: "\e914";
+}
+.icon-grandtotals-pivot-grid:before {
+  content: "\e903";
+}
+.icon-cellediting-pivot-grid:before {
+  content: "\e904";
+}
+.icon-grid-exporter:before {
+  content: "\e905";
+}
+.icon-drag-data:before {
+  content: "\e906";
+}
+.icon-drag-drop-element:before {
+  content: "\e907";
+}
+.icon-drag-drop-grid:before {
+  content: "\e908";
+}
+.icon-drag-group:before {
+  content: "\e909";
+}
+.icon-drag-handle:before {
+  content: "\e90a";
+}
+.icon-drag-proxy:before {
+  content: "\e90b";
+}
+.icon-drag-simple:before {
+  content: "\e90c";
+}
+.icon-drag-constraint:before {
+  content: "\e90d";
+}
+.icon-binding-algebra-binary:before {
+  content: "\e90e";
+}
+.icon-binding-algebra-formatters:before {
+  content: "\e90f";
+}
+.icon-binding-algebra-ternary:before {
+  content: "\e910";
+}
+.icon-binding-algebra-unary:before {
+  content: "\e911";
+}
+.icon-AlgebraInExpressions:before {
+  content: "\e912";
+}
+.icon-d3-hierarchy:before {
+  content: "\e915";
+}
+.icon-d3-svg:before {
+  content: "\e916";
+}
+.icon-d3-view-custom-svg-heatmap:before {
+  content: "\e917";
+}
+.icon-d3-view-heatmap-sales:before {
+  content: "\e918";
+}
+.icon-d3-view-pack:before {
+  content: "\e919";
+}
+.icon-d3-view-particles:before {
+  content: "\e91a";
+}
+.icon-d3-view-sunburst:before {
+  content: "\e91b";
+}
+.icon-d3-view-sunburst-zoom:before {
+  content: "\e91c";
+}
+.icon-d3-view-transitions:before {
+  content: "\e91d";
+}
+.icon-d3-view-tree:before {
+  content: "\e91e";
+}
+.icon-d3-view-treemap-tooltip:before {
+  content: "\e955";
+}
+.icon-d3-view-treemap:before {
+  content: "\e91f";
+}
+.icon-d3:before {
+  content: "\e920";
+}
+.icon-d3-canvas:before {
+  content: "\e921";
+}
+.icon-pie-double-donut:before {
+  content: "\e922";
+}
+.icon-calendar-days-view:before {
+  content: "\e923";
+}
+.icon-calendar-month-view:before {
+  content: "\e924";
+}
+.icon-calendar-panel:before {
+  content: "\e925";
+}
+.icon-calendar-timezone:before {
+  content: "\e926";
+}
+.icon-calendar-validation:before {
+  content: "\e927";
+}
+.icon-calendar-week-view:before {
+  content: "\e928";
+}
+.icon-plus-circle:before {
+  content: "\e900";
+}
+.icon-minus-circle:before {
+  content: "\e901";
 }
 .icon-amf-three:before {
   content: "\e938";
@@ -1276,136 +1411,4 @@
 }
 .icon-easing-functions:before {
   content: "\e7ba";
-}
-.icon-row-editing:before {
-  content: "\e93a";
-}
-.icon-locked-pivot-grid:before {
-  content: "\e929";
-}
-.icon-d3-view-heatmap-purchases:before {
-  content: "\e939";
-}
-.icon-d3-view-heatmap-heatmap:before {
-  content: "\e913";
-}
-.icon-d3-heatmap:before {
-  content: "\e914";
-}
-.icon-grandtotals-pivot-grid:before {
-  content: "\e903";
-}
-.icon-cellediting-pivot-grid:before {
-  content: "\e904";
-}
-.icon-grid-exporter:before {
-  content: "\e905";
-}
-.icon-drag-data:before {
-  content: "\e906";
-}
-.icon-drag-drop-element:before {
-  content: "\e907";
-}
-.icon-drag-drop-grid:before {
-  content: "\e908";
-}
-.icon-drag-group:before {
-  content: "\e909";
-}
-.icon-drag-handle:before {
-  content: "\e90a";
-}
-.icon-drag-proxy:before {
-  content: "\e90b";
-}
-.icon-drag-simple:before {
-  content: "\e90c";
-}
-.icon-drag-constraint:before {
-  content: "\e90d";
-}
-.icon-binding-algebra-binary:before {
-  content: "\e90e";
-}
-.icon-binding-algebra-formatters:before {
-  content: "\e90f";
-}
-.icon-binding-algebra-ternary:before {
-  content: "\e910";
-}
-.icon-binding-algebra-unary:before {
-  content: "\e911";
-}
-.icon-AlgebraInExpressions:before {
-  content: "\e912";
-}
-.icon-d3-hierarchy:before {
-  content: "\e915";
-}
-.icon-d3-svg:before {
-  content: "\e916";
-}
-.icon-d3-view-custom-svg-heatmap:before {
-  content: "\e917";
-}
-.icon-d3-view-heatmap-sales:before {
-  content: "\e918";
-}
-.icon-d3-view-pack:before {
-  content: "\e919";
-}
-.icon-d3-view-particles:before {
-  content: "\e91a";
-}
-.icon-d3-view-sunburst:before {
-  content: "\e91b";
-}
-.icon-d3-view-sunburst-zoom:before {
-  content: "\e91c";
-}
-.icon-d3-view-transitions:before {
-  content: "\e91d";
-}
-.icon-d3-view-tree:before {
-  content: "\e91e";
-}
-.icon-d3-view-treemap-tooltip:before {
-  content: "\e955";
-}
-.icon-d3-view-treemap:before {
-  content: "\e91f";
-}
-.icon-d3:before {
-  content: "\e920";
-}
-.icon-d3-canvas:before {
-  content: "\e921";
-}
-.icon-pie-double-donut:before {
-  content: "\e922";
-}
-.icon-calendar-days-view:before {
-  content: "\e923";
-}
-.icon-calendar-month-view:before {
-  content: "\e924";
-}
-.icon-calendar-panel:before {
-  content: "\e925";
-}
-.icon-calendar-timezone:before {
-  content: "\e926";
-}
-.icon-calendar-validation:before {
-  content: "\e927";
-}
-.icon-calendar-week-view:before {
-  content: "\e928";
-}
-.icon-plus-circle:before {
-  content: "\e900";
-}
-.icon-minus-circle:before {
-  content: "\e901";
 }
