@@ -699,6 +699,7 @@ Ext.define('MyKitchen.store.Navigation', {
 
             children: [
                 { id: 'basic-panels', text: 'Basic Panel', leaf: true },
+                { id: 'panel-header', text: 'Panel with Header', leaf: true, iconCls: 'icon-direct-arg' },
                 { id: 'framed-panels', text: 'Framed Panel', leaf: true },
                 { id: 'panel-header-position', text: 'Header Positioning', leaf: true }
             ]
