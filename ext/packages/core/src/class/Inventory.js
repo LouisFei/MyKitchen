@@ -2,6 +2,10 @@
 /**
  * @class Ext.Inventory
  * @private
+ * 
+ * 提供一了个类名称的登记清单，用于管理所有的类的名称信息，类的全名，别名，替代名之间的映射。
+ * 在根据类全名，别名，替代名，创建对象时，方便的知道是哪个类。
+ * 创建类时，提供了更多快捷的渠道。
  */
 Ext.Inventory = function () {
 // @define Ext.Script
@@ -9,13 +13,13 @@ Ext.Inventory = function () {
 // @require Ext.Function
     var me = this;
 
-    me.names = [];
-    me.paths = {};
+    me.names = []; //所有类名
+    me.paths = {}; //所有的js文件路径，目录
     
-    me.alternateToName = {};
-    me.aliasToName = {};
-    me.nameToAliases = {};
-    me.nameToAlternates = {};
+    me.alternateToName = {}; //替代名与全名的映射表，一对一
+    me.aliasToName = {}; //别名与全名的映射表,一对一
+    me.nameToAliases = {}; //全名与别名的映射表，一对多
+    me.nameToAlternates = {}; //全名与替代名的映射表，一对多
     me.nameToPrefix = {};
 };
 
@@ -87,6 +91,9 @@ Ext.Inventory.prototype = {
         return this.nameToAliases[name] || null;
     },
 
+    /**
+     * 根据类的全名，查找它的替代名。
+     */
     getAlternatesByName: function (name) {
         return this.nameToAlternates[name] || null;
     },

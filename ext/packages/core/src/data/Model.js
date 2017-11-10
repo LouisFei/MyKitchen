@@ -1,4 +1,8 @@
 /**
+ * 模型或实体表示你的应用程序需要管理的对象。
+ * 模型表示了现实世界中许许多多的对象。
+ * 模型被应用于仓库，而仓库被应用于需要数据绑定的Ext组件中。
+ * 
  * A Model or Entity represents some object that your application manages. For example, one
  * might define a Model for Users, Products, Cars, or other real-world object that we want
  * to model in the system. Models are used by {@link Ext.data.Store stores}, which are in
@@ -8,6 +12,7 @@
  *
  * Models are defined as a set of fields and any arbitrary methods and properties relevant
  * to the model. For example:
+ * 模型中定义了字段集合，和对象实例方法。
  *
  *     Ext.define('User', {
  *         extend: 'Ext.data.Model',
@@ -199,6 +204,8 @@
  * Ext.data.Store Store docs} for more information on Stores.
  */
 Ext.define('Ext.data.Model', {
+
+    //类的替代名，可用于直接创建对象实例。
     alternateClassName: 'Ext.data.Record',
 
     requires: [
@@ -240,6 +247,7 @@ Ext.define('Ext.data.Model', {
 
     /**
      * @property {"C"/"R"/"U"/"D"} crudState
+     * 当前增删改查的状态
      * This value is initially "R" or "C" indicating the initial CRUD state. As the
      * record changes and the various joined parties (stores, sessions, etc.) are notified
      * this value is updated prior to these calls. In other words, the joined parties

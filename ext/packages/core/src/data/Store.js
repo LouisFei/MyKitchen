@@ -2,6 +2,8 @@
  * The Store class encapsulates a client side cache of {@link Ext.data.Model Model} objects. Stores load data via a
  * {@link Ext.data.proxy.Proxy Proxy}, and also provide functions for {@link #method-sort sorting}, {@link #filter filtering}
  * and querying the {@link Ext.data.Model model} instances contained within it.
+ * 
+ * 仓库Store类用于管理客户端Model对象的缓存。
  *
  * Creating a Store is easy - we just tell it the Model and the Proxy to use for loading and saving its data:
  *

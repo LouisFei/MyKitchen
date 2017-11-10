@@ -1,18 +1,20 @@
 // @tag class
 /**
  * @class Ext.ClassManager
+ * 类管理器
  *
  * Ext.ClassManager manages all classes and handles mapping from string class name to
  * actual class objects throughout the whole framework. It is not generally accessed directly, rather through
  * these convenient shorthands:
+ * 管理所有的类，处理类名字符串与真实类定义对象之间的映射关系。
  *
- * - {@link Ext#define Ext.define}
- * - {@link Ext#method!create Ext.create}
- * - {@link Ext#widget Ext.widget}
- * - {@link Ext#getClass Ext.getClass}
+ * - {@link Ext#define Ext.define} 定义类
+ * - {@link Ext#method!create Ext.create} 创建对象实例
+ * - {@link Ext#widget Ext.widget} 创建widget对象实例
+ * - {@link Ext#getClass Ext.getClass} 
  * - {@link Ext#getClassName Ext.getClassName}
  *
- * # Basic syntax:
+ * # Basic syntax: 基本语法：
  *
  *     Ext.define(className, properties);
  *
@@ -38,10 +40,11 @@
  *     var aaron = new Person("Aaron");
  *     aaron.eat("Sandwich"); // alert("I'm eating: Sandwich");
  *
+ * Ext.Class拥有强大的扩展功能。包括类创建，包含，继承，多继承，配置，静态成员，等等。
  * Ext.Class has a powerful set of extensible {@link Ext.Class#registerPreprocessor pre-processors} which takes care of
  * everything related to class creation, including but not limited to inheritance, mixins, configuration, statics, etc.
  *
- * # Inheritance:
+ * # Inheritance: 继承
  *
  *     Ext.define('Developer', {
  *          extend: 'Person',
@@ -68,7 +71,7 @@
  *
  * See {@link Ext.Base#method!callParent} for more details on calling superclass' methods
  *
- * # Mixins:
+ * # Mixins: 混入属性，多继承
  *
  *     Ext.define('CanPlayGuitar', {
  *          playGuitar: function() {
@@ -123,6 +126,7 @@
  *                // alert("F#...G...D...A");
  *
  * # Config:
+ * 定义类的配置项，会把config里的每个属性加上get和set方法
  *
  *     Ext.define('SmartPhone', {
  *          config: {
@@ -170,6 +174,7 @@
  *     iPhone.getOperatingSystem(); // 'Other'
  *
  * # Statics:
+ * 定义静态方法，属性不能被子类继承
  *
  *     Ext.define('Computer', {
  *          statics: {
@@ -225,11 +230,16 @@ var makeCtor = Ext.Class.makeCtor,
         */
     },
 
+    /**
+     * 内部的管理器，本质就是一个Ext.Inventory对象实例。
+     * 然后通过Ext.apply()方法，又扩展了很多属性和方法。
+     */
     Manager = Ext.apply(new Ext.Inventory(), {
         /**
          * @property {Object} classes
          * All classes which were defined through the ClassManager. Keys are the
          * name of the classes and the values are references to the classes.
+         * 存放所有的类定义
          * @private
          */
         classes: {},
@@ -262,6 +272,7 @@ var makeCtor = Ext.Class.makeCtor,
 
         /**
          * Checks if a class has already been created.
+         * 检查是否一个类已经被创建。
          *
          * @param {String} className
          * @return {Boolean} exist
@@ -312,6 +323,7 @@ var makeCtor = Ext.Class.makeCtor,
 
         /**
          * @private
+         * 触发创建
          */
         triggerCreated: function (className, state) {
             Manager.existCache[className] = state || 1;
@@ -321,6 +333,7 @@ var makeCtor = Ext.Class.makeCtor,
 
         /**
          * @private
+         * 创建时，添加监听
          */
         onCreated: function(fn, scope, className) {
             Manager.addListener(fn, scope, className, Manager.createdListeners, Manager.nameCreatedListeners);
@@ -328,9 +341,12 @@ var makeCtor = Ext.Class.makeCtor,
 
         /**
          * @private
+         * 通知
+         * 
+         * @param {string} className 类全名
          */
         notify: function (className, listeners, nameListeners) {
-            var alternateNames = Manager.getAlternatesByName(className),
+            var alternateNames = Manager.getAlternatesByName(className), //根据类全名获得所有的替代名。
                 names = [className],
                 i, ln, j, subLn, listener, name;
 
@@ -683,6 +699,7 @@ var makeCtor = Ext.Class.makeCtor,
 
         /**
          * Defines a class.
+         * 定义一个类，从4.1版本开始，使用Ext.define代替。
          * @deprecated 4.1 Use {@link Ext#define} instead.
          * @private
          */
@@ -780,6 +797,9 @@ var makeCtor = Ext.Class.makeCtor,
             }
         },
 
+        /**
+         * 创建类重写？？
+         */
         createOverride: function (className, data, createdFn) {
             var me = this,
                 overriddenClassName = data.override,
@@ -1465,16 +1485,20 @@ var makeCtor = Ext.Class.makeCtor,
         delete target.prototype.deprecated;
     });
 
+    /**
+     * 给Ext对象扩展方法
+     */
     Ext.apply(Ext, {
         /**
          * Instantiate a class by either full name, alias or alternate name.
+         * 创建对象实例。可以根据类全名，别名，替代名等方式。
          *
          * If {@link Ext.Loader} is {@link Ext.Loader#setConfig enabled} and the class has
          * not been defined yet, it will attempt to load the class via synchronous loading.
          *
          * For example, all these three lines return the same result:
          *
-         *      // xtype
+         *      // xtype 根据类的xtype创建对象
          *      var window = Ext.create({
          *          xtype: 'window',
          *          width: 600,
@@ -1482,28 +1506,28 @@ var makeCtor = Ext.Class.makeCtor,
          *          ...
          *      });
          *
-         *      // alias
+         *      // alias 根据类的别名创建对象
          *      var window = Ext.create('widget.window', {
          *          width: 600,
          *          height: 800,
          *          ...
          *      });
          *
-         *      // alternate name
+         *      // alternate name 根据类的替代名创建对象
          *      var window = Ext.create('Ext.Window', {
          *          width: 600,
          *          height: 800,
          *          ...
          *      });
          *
-         *      // full class name
+         *      // full class name 根据类的全名创建对象
          *      var window = Ext.create('Ext.window.Window', {
          *          width: 600,
          *          height: 800,
          *          ...
          *      });
          *
-         *      // single object with xclass property:
+         *      // single object with xclass property:  单例对象？？
          *      var window = Ext.create({
          *          xclass: 'Ext.window.Window', // any valid value for 'name' (above)
          *          width: 600,
@@ -1579,6 +1603,8 @@ var makeCtor = Ext.Class.makeCtor,
 
         /**
          * Convenient shorthand to create a widget by its xtype or a config object.
+         * 方便快捷的创建一个部件对象实例（通过它的xtype或是一个配置）。
+         * 前缀widget，在定义类，或创建对象实例时，都可以省略。
          *
          *      var button = Ext.widget('button'); // Equivalent to Ext.create('widget.button');
          *
@@ -1860,33 +1886,39 @@ var makeCtor = Ext.Class.makeCtor,
          * Sencha Cmd v4, the `compatibility` declaration can likewise be used to remove
          * incompatible overrides from a build.
          *
-         * @param {String} className The class name to create in string dot-namespaced format, for example:
+         * @param {String} className 
+         * 类的全名（包含命名空间）
+         * The class name to create in string dot-namespaced format, for example:
          * 'My.very.awesome.Class', 'FeedViewer.plugin.CoolPager'
          * It is highly recommended to follow this simple convention:
          *  - The root and the class name are 'CamelCased'
          *  - Everything else is lower-cased
          * Pass `null` to create an anonymous class.
-         * @param {Object} data The key - value pairs of properties to apply to this class. Property names can be of any valid
+         * @param {Object} data 
+         * key-value的形式，作为类的属性和方法成员。还有一些key是保留的关键字，有着特殊的用途，列表在下方。
+         * The key - value pairs of properties to apply to this class. Property names can be of any valid
          * strings, except those in the reserved listed below:
          *  
-         *  - {@link Ext.Class#cfg-alias alias}
-         *  - {@link Ext.Class#cfg-alternateClassName alternateClassName}
-         *  - {@link Ext.Class#cfg-cachedConfig cachedConfig}
+         *  - {@link Ext.Class#cfg-alias alias} 别名
+         *  - {@link Ext.Class#cfg-alternateClassName alternateClassName} 替代名
+         *  - {@link Ext.Class#cfg-cachedConfig cachedConfig} 
          *  - {@link Ext.Class#cfg-config config}
-         *  - {@link Ext.Class#cfg-extend extend}
+         *  - {@link Ext.Class#cfg-extend extend} 继承扩展
          *  - {@link Ext.Class#cfg-inheritableStatics inheritableStatics}
-         *  - {@link Ext.Class#cfg-mixins mixins}
-         *  - {@link Ext.Class#cfg-override override}
+         *  - {@link Ext.Class#cfg-mixins mixins} 多继承
+         *  - {@link Ext.Class#cfg-override override} 重写
          *  - {@link Ext.Class#cfg-platformConfig platformConfig}
-         *  - {@link Ext.Class#cfg-privates privates}
-         *  - {@link Ext.Class#cfg-requires requires}
+         *  - {@link Ext.Class#cfg-privates privates} 私有成员
+         *  - {@link Ext.Class#cfg-requires requires} 需要引入的库
          *  - `self`
-         *  - {@link Ext.Class#cfg-singleton singleton}
-         *  - {@link Ext.Class#cfg-statics statics}
+         *  - {@link Ext.Class#cfg-singleton singleton} 单例
+         *  - {@link Ext.Class#cfg-statics statics} 静态成员（类成员）
          *  - {@link Ext.Class#cfg-uses uses}
-         *  - {@link Ext.Class#cfg-xtype xtype} (for {@link Ext.Component Components} only)
+         *  - {@link Ext.Class#cfg-xtype xtype} (for {@link Ext.Component Components} only) 类的类型xtype
          *
-         * @param {Function} [createdFn] Callback to execute after the class is created, the execution scope of which
+         * @param {Function} [createdFn] 
+         * 当类对象实例被创建后调用的回调函数。
+         * Callback to execute after the class is created, the execution scope of which
          * (`this`) will be the newly created class itself.
          * @return {Ext.Base}
          * @member Ext
