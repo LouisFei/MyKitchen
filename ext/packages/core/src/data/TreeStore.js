@@ -2,18 +2,24 @@
  * The TreeStore is a store implementation that owns the {@link #cfg-root root node} of
  * a tree, and provides methods to load either local or remote data as child nodes of the root
  * and any descendant non-leaf node.
+ * 
+ * TreeStore是一个树的自己的store实现，提供方法去加载本地或远程数据作为根的子结点，……
  *
  * The TreeStore must be used as the store of a {@link Ext.tree.Panel tree panel}.
+ * TreeStore必须作为TreePanel的store.
  *
  * This class also relays many node events from the underlying node structure.
  *
  * # Using Models
  *
  * If no Model is specified, an implicit model will be created that extends {@link Ext.data.TreeModel}.
+ * 如果没有指定model，那么一个隐式的model将被创建。
  * The standard Tree fields will also be copied onto the Model for maintaining their state. These fields are listed
  * in the {@link Ext.data.NodeInterface} documentation.
+ * 
  *
  * # Reading Nested Data
+ * # 读取内嵌的数据
  *
  * For the tree to read nested data, the {@link Ext.data.reader.Reader} must be configured with a root property,
  * so the reader can find nested data for each node (if a root is not specified, it will default to
@@ -85,6 +91,8 @@ Ext.define('Ext.data.TreeStore', {
          * the tree store to attempt to load.  This will occur regardless the value of 
          * {@link Ext.data.ProxyStore#autoLoad autoLoad}. If you you do not want the store 
          * to load on instantiation, ensure expanded is false and load the store when you're ready.
+         * 
+         * 一个重要的事，在根结点的expanded属性为true时，会导致数据被加载。
          * 
          */
         root: null,

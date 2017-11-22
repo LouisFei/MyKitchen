@@ -19,30 +19,37 @@ Ext.define('MyKitchen.view.main.Main', {
     stateful: true,
     stateId: 'mykitchen-viewport',
 
-    items: [{
-        region: 'north',
-        xtype: 'appHeader'
-    }, {
-        region: 'center',
-        xtype: 'contentPanel',
-        reference: 'contentPanel',
-        ariaRole: 'main',
-        dockedItems: [{
-            xtype: 'navigation-toolbar'
-        }]
-    }, {
-        xtype: 'codePreview',
-        region: 'east',
-        id: 'east-region',
-        itemId: 'codePreview',
-        stateful: true,
-        stateId: 'mainnav.east',
-        split: true,
-        collapsible: true,
-        collapsed: true,
-        width: 350,
-        minWidth: 100
-    }],
+    items: [
+        //上部，北
+        {
+            region: 'north',
+            xtype: 'appHeader'
+        }, 
+        //中间
+        {
+            region: 'center',
+            xtype: 'contentPanel',
+            reference: 'contentPanel',
+            ariaRole: 'main',
+            dockedItems: [{
+                xtype: 'navigation-toolbar'
+            }]
+        }, 
+        //右侧，东
+        {
+            xtype: 'codePreview',
+            region: 'east',
+            id: 'east-region',
+            itemId: 'codePreview',
+            stateful: true,
+            stateId: 'mainnav.east',
+            split: true,
+            collapsible: true,
+            collapsed: true,
+            width: 350,
+            minWidth: 100
+        }
+    ],
 
     applyState: function(state) {
         this.getController().applyState(state);

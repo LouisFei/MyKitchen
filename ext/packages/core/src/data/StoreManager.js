@@ -2,6 +2,10 @@
  * Contains a collection of all stores that are created that have an identifier. An identifier can be assigned by
  * setting the {@link Ext.data.AbstractStore#storeId storeId} property. When a store is in the StoreManager, it can be
  * referred to via it's identifier:
+ * 
+ * 包含一个集合，所有的store被创建后有一个标识。
+ * 一个标识能被分配给storeId属性。
+ * 当一个store在Store管理器中时，它能被通过它的标识引用。
  *
  *     Ext.create('Ext.data.Store', {
  *         model: 'SomeModel',
@@ -11,6 +15,7 @@
  *     var store = Ext.data.StoreManager.lookup('myStore');
  *
  * Also note that the {@link #lookup} method is aliased to {@link Ext#getStore} for convenience.
+ * 注意，lookup方法还有一个快捷方法叫Ext.getStore
  *
  * If a store is registered with the StoreManager, you can also refer to the store by it's identifier when registering
  * it with any Component that consumes data from a store:
@@ -34,6 +39,7 @@ Ext.define('Ext.data.StoreManager', {
         'Ext.StoreManager'
     ],
 
+    //单例
     singleton: true,
 
     requires: [
@@ -49,6 +55,9 @@ Ext.define('Ext.data.StoreManager', {
      * Registers one or more Stores with the StoreManager. You do not normally need to register stores manually. Any
      * store initialized with a {@link Ext.data.Store#storeId} will be auto-registered.
      * @param {Ext.data.Store...} stores Any number of Store instances
+     * 
+     * 注册一个或多个store到管理器中。你通常不需要手头注册。
+     * 任务一个拥有storeId值的store都将被自动注册。
      */
     register: function() {
         for (var i = 0, s; (s = arguments[i]); i++) {
@@ -59,6 +68,7 @@ Ext.define('Ext.data.StoreManager', {
     /**
      * Unregisters one or more Stores with the StoreManager
      * @param {String/Object...} stores Any number of Store instances or ID-s
+     * 取消注册
      */
     unregister: function() {
         for (var i = 0, s; (s = arguments[i]); i++) {
@@ -67,6 +77,7 @@ Ext.define('Ext.data.StoreManager', {
     },
 
     /**
+     * 通过storeId获得已注册的store
      * Gets a registered Store by id
      * @param {String/Object} store The id of the Store, or a Store instance, or a store configuration
      * @param {String} [defaultType] The store type to create when used with store configuration and there

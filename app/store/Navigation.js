@@ -93,32 +93,551 @@ Ext.define('MyKitchen.store.Navigation', {
         }
     },
 
-    /**
-     * Calendar
-     */
-    getNavItemsCalendar: function () {
-        return {
-            text: 'Calendar',
-            id: 'calendar',
-            tier: 'premium',
-            since: '6.2.0',
 
-            description: 'The calendar family of components allows you to present ' +
-                'schedules and manage event information.',
+    //////////////////////////////////////////
+    /**
+     * Components 组件
+     */
+    getNavItemsGeneral: function () {
+        var me = this;
+        return {
+            text: 'Components',
+            id: 'components',
+            expanded: true,
+            iconCls: 'icon-state-saving',
+            description: 'Ext JS provides a wide variety of other, simpler components.' + 
+                        '<br/>Ext JS提供了各式各样的简单的组件。',
 
             children: [
-                { id: 'calendar-panel', text: 'Calendar Panel', leaf: true },
-                { id: 'calendar-month-view', text: 'Month View', leaf: true },
-                { id: 'calendar-week-view', text: 'Week View', leaf: true },
-                { id: 'calendar-days-view', text: 'Days View', leaf: true },
-                { id: 'calendar-timezone', text: 'Timezone Support', leaf: true },
-                { id: 'calendar-validation', text: 'Drag/Resize Validation', leaf: true }
+                me.getNavItemsButtons(), //Buttons
+                me.getNavItemsDataBinding(), //Data Binding
+                me.getNavItemsDataView(), //DataView
+                me.getNavItemsDragDrop(), //Drag & Drop
+                me.getNavItemsExtDirect(), //Ext Direct
+                me.getNavItemsFormFields(), //Form Fields
+                me.getNavItemsForms(), //Forms
+                me.getNavItemsLayouts(), //Layouts
+                me.getNavItemsPanels(), //Panels
+                me.getNavItemsTabs(), //Tabs
+                me.getNavItemsTips(), //Tooltips
+                me.getNavItemsToolbars(), //Toolbars
+                me.getNavItemsWindows(), //Windows
+                me.getNavItemsGauge(), //Gauges
+                me.getNavItemsEnterprise() //Enterprise
             ]
         };
     },
 
     /**
-     * Charts
+     * Components/Buttons 按钮
+     */
+    getNavItemsButtons: function () {
+        return {
+            text: 'Buttons',
+            id: 'buttons',
+
+            description: 'Buttons are a utilitarian component of Ext JS. From forms to grid row widgets, ' +
+                         'they can be used in nearly any application for user interaction and directing usability.',
+            children: [
+                { id: 'basic-buttons', text: 'Basic Buttons √', leaf: true },
+                { id: 'toggle-buttons', text: 'Toggle Buttons √', leaf: true },
+                { id: 'menu-buttons', text: 'Menu Buttons √', leaf: true },
+                { id: 'menu-bottom-buttons', text: 'Menu Bottom Buttons √', leaf: true },
+                { id: 'split-buttons', text: 'Split Buttons √', leaf: true },
+                { id: 'split-bottom-buttons', text: 'Split Bottom Buttons', leaf: true },
+                { id: 'left-text-buttons', text: 'Left Text Buttons', leaf: true },
+                { id: 'right-text-buttons', text: 'Right Text Buttons', leaf: true },
+                { id: 'link-buttons', text: 'Link Buttons', leaf: true },
+                { id: 'segmented-buttons', text: 'Segmented Buttons', leaf: true },
+                { id: 'vertical-segmented-buttons', text: 'Vertical Segmented Buttons', leaf: true }
+            ]
+        };
+    },
+
+    /**
+     * Components/Data Binding 数据绑定
+     */
+    getNavItemsDataBinding: function () {
+        return {
+            text: 'Data Binding',
+            id: 'data-binding',
+
+            description: 'Data binding, and the ViewModel that powers it, are powerful pieces of Ext JS. ' +
+                         'Together, they enable you to create a seamless connection between your application UI ' +
+                         'and your business logic.' + 
+                         '<br/>数据绑定，视图模型的威力，它们只是Ext JS一小部分牛逼技能' +
+                         '它们能使你在你的程序视图和你的业务逻辑之间创建一个无缝连接。',
+            children: [
+                { id: 'binding-hello-world', text: 'Hello World', leaf: true },
+                { id: 'binding-dynamic', text: 'Dynamic', leaf: true },
+                { id: 'binding-two-way', text: 'Two Way', leaf: true },
+                { id: 'binding-formulas', text: 'Formulas', leaf: true },
+                { id: 'binding-associations', text: 'Associations', leaf: true },
+                { id: 'binding-component-state', text: 'Component State', leaf: true },
+                { id: 'binding-chained-stores', text: 'Chaining Stores', leaf: true},
+                { id: 'binding-combo-chaining', text: 'Chained ComboBoxes', leaf: true },
+                { id: 'binding-selection', text: 'Chaining Selection', leaf: true },
+                //{ id: 'binding-gridform', text: 'Grid + Form', leaf: true },
+                { id: 'binding-model-validation', text: 'Model Validation', leaf: true },
+                { id: 'binding-field-validation', text: 'Field Validation', leaf: true },
+                { id: 'binding-two-way-formulas', text: 'Two-Way Formulas', leaf: true },
+                { id: 'binding-slider-form', text: 'Slider and Form Fields', leaf: true },
+                { id: 'binding-child-session', text: 'Isolated Child Sessions', leaf: true },
+                { id: 'binding-algebra-binary', text: 'Binary Operators', leaf: true },
+                { id: 'binding-algebra-ternary', text: 'Ternary Operators', leaf: true },
+                { id: 'binding-algebra-formatters', text: 'Formatters', leaf: true },
+                { id: 'binding-algebra-unary', text: 'Unary Operators', leaf: true }
+            ]
+        };
+    },
+
+    /**
+     * Components/DataView 数据视图
+     */
+    getNavItemsDataView: function () {
+        return {
+            text: 'DataView',
+            id: 'data-view',
+
+            description: 'Dataviews are an XTemplate based mechanism for displaying data using custom layout' +
+                         'templates and formatting. They can connect to any store and display data in any way' +
+                         'you see fit.',
+            children: [
+                { id: 'dataview-multisort', text: 'Multisort DataView √', leaf: true }
+            ]
+        };
+    },
+
+    /**
+     * Components/Drag & Drop
+     */
+    getNavItemsDragDrop: function () {
+        // id: 'drag-drop-grid',
+        // id: 'drag-drop-element',
+
+        return {
+            text: 'Drag & Drop',
+            id: 'drag-drop',
+
+            description: 'Drag and Drop functionality gives developers the ability to ' +
+                'create interactive interfaces for their users.',
+
+            children: [
+                { id: 'drag-simple', text: 'Simple', leaf: true },
+                { id: 'drag-constraint', text: 'Constraints', leaf: true },
+                { id: 'drag-proxy', text: 'Proxies', leaf: true },
+                { id: 'drag-handle', text: 'Handles', leaf: true },
+                { id: 'drag-group', text: 'Groups', leaf: true },
+                { id: 'drag-data', text: 'Data', leaf: true },
+                { id: 'drag-file', text: 'Files', iconCls: 'icon-drag-drop-element', leaf: true }
+            ]
+        };
+    },
+
+    /**
+     * Components/Ext Direct
+     */
+    getNavItemsExtDirect: function () {
+        return {
+            text: 'Ext Direct',
+            id: 'direct',
+
+            description: 'Ext Direct streamlines communication between the client and server by providing a single ' +
+                         'interface that reduces much of the common code required to validate and handle data.',
+
+            children: [
+                { id: 'direct-grid', text: 'Grid with Direct store', leaf: true },
+                { id: 'direct-tree', text: 'Tree with dynamic nodes', leaf: true },
+                { id: 'direct-form', text: 'Form load and submit actions', leaf: true },
+                { id: 'direct-generic', text: 'Generic remoting and polling', leaf: true },
+                { id: 'direct-named', text: 'Custom form processing', leaf: true }
+            ]
+        };
+    },
+
+    /**
+     * Components/Form Fields
+     */
+    getNavItemsFormFields: function () {
+        return {
+            text: 'Form Fields',
+            id: 'form-fields',
+
+            description: 'Form Fields offer developers standard HTML form fields with built-in event handling, ' +
+                         'rendering, and other common functionality you may require. Variations of fields include: ' +
+                         'textfields, textareas, htmleditors, radio groups, checkboxes, and more!',
+            children: [
+                { id: 'form-number', text: 'Number Field', leaf: true },
+                { id: 'form-date', text: 'Date/Month Picker', leaf: true },
+                {
+                    id: 'combo-boxes',
+                    text: 'ComboBoxes',
+                    leaf: false,
+
+                    description: 'These examples demonstrate that ComboBoxes can use any type of ' +
+                            'Ext.data.Store as a data souce. This means your data can be XML, JSON, '+
+                            'arrays or any other supported format. It can be loaded using Ajax, JSONP or locally.',
+
+                    children: [
+                        {id: 'simple-combo', text: 'Simple ComboBox', leaf: true },
+                        {id: 'remote-combo', text: 'Remote Query ComboBox', leaf: true },
+                        {id: 'remote-loaded-combo', text: 'Remote loaded ComboBox', leaf: true },
+                        {id: 'custom-template-combo', text: 'Custom Template ComboBox', leaf: true }
+                    ]
+                },
+                { id: 'form-fileuploads', text: 'File Uploads', leaf: true },
+                { id: 'form-fieldreplicator', text: 'Field Replicator', leaf: true },
+                { id: 'form-grid', text: 'Form with Grid', leaf: true },
+                { id: 'form-tag', text: 'Tag Field', leaf: true },
+                { id: 'multi-selector', text: 'Multi-Selector Grid', leaf: true },
+                { id: 'form-fieldtypes', text: 'Field Types', leaf: true},
+                { id: 'form-fieldcontainer', text: 'Field Container', leaf: true},
+                { id: 'form-checkboxgroup', text: 'Checkbox Groups √', leaf: true },
+                { id: 'form-radiogroup', text: 'Radio Groups', leaf: true },
+                { id: 'slider-field', text: 'Slider Field', leaf: true }
+            ]
+        };
+    },
+
+    /**
+     * Components/Forms
+     */
+    getNavItemsForms: function () {
+        return {
+            text: 'Forms',
+            id: 'forms',
+
+            description: 'Form Panel extends panel to offer developers the ability to manage data collection in a ' +
+                         'simple and straightforward manner. Field display and handling can be configured in almost ' +
+                         'any conceivable fashion and offers default objects to minimize repetitive code.',
+            children: [
+                { id: 'form-login', text: 'Login Form', leaf: true },
+                { id: 'form-contact', text: 'Contact Form', leaf: true },
+                { id: 'form-register', text: 'Register Form', leaf: true  },
+                { id: 'form-checkout', text: 'Checkout Form', leaf: true },
+                { id: 'form-color-picker', text: 'Color Picker', leaf: true},
+                { id: 'form-rating', text: 'Rating Form', leaf: true},
+                { id: 'form-vboxlayout', text: 'VBox Layout', leaf: true },
+                { id: 'form-hboxlayout', text: 'HBox Layout', leaf: true },
+                { id: 'form-multicolumn', text: 'Multi Column Form', leaf: true },
+                { id: 'form-xml', text: 'XML Form', leaf: true },
+                { id: 'form-advtypes', text: 'Custom VTypes', leaf: true },
+                { id: 'form-customfields', text: 'Custom fields', leaf: true },
+                { id: 'form-forumsearch', text: 'Forum Search', leaf: true },
+                { id: 'form-customerrors', text: 'Custom Error Handling', leaf: true }
+            ]
+        };
+    },
+
+    /**
+     * Components/Layouts
+     */
+    getNavItemsLayouts: function () {
+        return {
+            text: 'Layouts',
+            id: 'layouts',
+
+            description: 'Layouts can be considered the heart and soul of Ext JS. They manage the DOM flow and ' +
+                         'display of your content. There are multiple layout options that should satisfy almost' +
+                         'any application wireframe.',
+            children: [
+                { id: 'layout-absolute', text: 'Absolute Layout', leaf: true },
+                { id: 'layout-accordion', text: 'Accordion Layout', leaf: true },
+                { id: 'layout-border', text: 'Border Layout', leaf: true },
+                { id: 'layout-card', text: 'Card Layout', leaf: true },
+                { id: 'layout-cardtabs', text: 'Card (Tabs)', leaf: true },
+                { id: 'layout-center', text: 'Center Layout', leaf: true },
+                { id: 'layout-column', text: 'Column Layout', leaf: true },
+                { id: 'layout-fit', text: 'Fit Layout', leaf: true },
+                { id: 'layout-horizontal-box', text: 'HBox Layout', leaf: true },
+                { id: 'layout-table', text: 'Table Layout', leaf: true },
+                { id: 'layout-vertical-box', text: 'VBox Layout', leaf: true }
+            ]
+        };
+    },
+
+    /**
+     * Components/Panels
+     */
+    getNavItemsPanels: function () {
+        return {
+            text: 'Panels',
+            id: 'panels',
+            // iconCls: 'icon-windows',
+
+            description: 'Panels are the basic container that makes up the structure ' +
+                'of most applications. Panels have a header and body, and can be arranged ' +
+                'in various ways using layouts.',
+
+            children: [
+                { id: 'basic-panels', text: 'Basic Panel', leaf: true },
+                { id: 'panel-header', text: 'Panel with Header', leaf: true, iconCls: 'icon-direct-arg' },
+                { id: 'framed-panels', text: 'Framed Panel', leaf: true },
+                { id: 'panel-header-position', text: 'Header Positioning', leaf: true }
+            ]
+        };
+    },
+
+    /**
+     * Components/Tabs
+     */
+    getNavItemsTabs: function () {
+        return {
+            text: 'Tabs',
+            id: 'tabs',
+
+            description: 'Tab Panels are panels that have extended support for containing and displaying children ' +
+                         'items. These children are managed using a Card Layout and are shown as tabulated content.',
+            children: [
+                { id: 'basic-tabs', text: 'Basic Tabs', leaf: true },
+                { id: 'plain-tabs', text: 'Plain Tabs', leaf: true },
+                { id: 'framed-tabs', text: 'Framed Tabs', leaf: true },
+                { id: 'icon-tabs', text: 'Icon Tabs', leaf: true },
+                { id: 'ajax-tabs', text: 'Ajax Tabs', leaf: true },
+                { id: 'advanced-tabs', text: 'Advanced Tabs', leaf: true },
+                { id: 'lazy-tabs', text: 'Lazy Instantiating Tabs', leaf: true},
+                { id: 'navigation-tabs', text: 'Navigation Tabs', leaf: true },
+                { id: 'side-navigation-tabs', text: 'Side Navigation Tabs', leaf: true },
+                { id: 'header-tabs', text: 'Header Tabs', leaf: true },
+                { id: 'reorderable-tabs', text: 'Reorderable Tabs', leaf: true }
+            ]
+        };
+    },
+
+    /**
+     * Components/Tooltips
+     */
+    getNavItemsTips: function () {
+        return {
+            text: 'Tooltips',
+            id: 'tooltips',
+
+            description: 'Tooltip examples',
+            
+            children: [{
+                id: 'anchored-tooltips', text: 'Anchored ToolTips', leaf: true
+            }, {
+                id: 'mousetrack-tooltips', text: 'Mouse Tracking ToolTips', leaf: true, compat: Ext.platformTags.desktop
+            }, {
+                id: 'html-tooltips', text: 'Tooltips embedded in HTML', leaf: true
+            }, {
+                id: 'tip-aligning', text: 'Tooltip align options', leaf: true
+            }, {
+                id: 'closable-tooltips', text: 'Closable ToolTips', leaf: true
+            }]
+        };
+    },
+
+    /**
+     * Components/Toolbars
+     */
+    getNavItemsToolbars: function () {
+        return {
+            text: 'Toolbars',
+            id: 'toolbars',
+
+            description: 'Toolbars are easily customizable components that give developers a simple way to display ' +
+                         'a variety of user interfaces.',
+            children: [
+                { id: 'basic-toolbar', text: 'Reorderable Toolbar', leaf: true },
+                { id: 'docked-toolbars', text: 'Docked Toolbar', leaf: true },
+                { id: 'breadcrumb-toolbar', text: 'Breadcrumb Toolbar', leaf: true },
+                { id: 'toolbar-overflow', text: 'Toolbar Overflow', leaf: true },
+                { id: 'statusbar-demo', text: 'StatusBar', leaf: true },
+                { id: 'toolbar-menus', text: 'Toolbar with Menus', leaf: true }
+            ]
+        };
+    },
+
+    /**
+     * Components/Windows
+     */
+    getNavItemsWindows: function () {
+        return {
+            text: 'Windows',
+            id: 'windows',
+            // iconCls: 'icon-windows',
+
+            description: 'Windows are specialized panels, intended to be used as floating, ' +
+            'resizable, and draggable containers in your application.',
+
+            children: [
+                { id: 'basic-window', text: 'Basic Window', leaf: true },
+                { id: 'message-box', text: 'Message Box', leaf: true },
+                { id: 'window-variations', text: 'Window Variations', iconCls: 'icon-window', leaf: true },
+                { id: 'toast-view', text: 'Ext.Toast', leaf: true }
+            ]
+        };
+    },
+
+    /**
+     * Components/Gauges
+     */
+    getNavItemsGauge: function () {
+        return {
+            text: 'Gauges',
+            id: 'gauges',
+            iconCls: 'icon-gauge-charts', // TODO
+
+            description: 'The gauge component is a flexible progress bar that displays ' +
+                'its value in a circular form. The gauge is similar to a gauge chart ' +
+                'except that there is no axis.',
+            children: [
+                { id: 'default-gauge', iconCls: 'icon-gauge-basic', text: 'Gauge', leaf: true }
+            ],
+
+            compat: !Ext.isIE8
+        };
+    },
+
+    /**
+     * Components/Enterprise
+     */
+    getNavItemsEnterprise: function () {
+        return {
+            text: 'Enterprise',
+            id: 'enterprise',
+
+            description: 'Our Enterprise tools offer developers the ability to easily ' +
+                'utilize data interfaces such as SOAP and AMF.',
+
+            children: [
+                { id: 'amf-grid', text: 'AMF Grid', leaf: true },
+                { id: 'soap-grid', text: 'SOAP Grid', leaf: true }
+            ]
+        };
+    },
+
+    //////////////////////////////////////
+    /**
+     * Grids 数据表格
+     */
+    getNavItemsGrid: function () {
+        return {
+            text: 'Grids',
+            id: 'grids',
+            expanded: true,
+
+            description: 'Grids are one of the centerpieces of Ext JS. They are incredibly versatile components ' +
+                         'that provide an easy path to display, sort, group, and edit data. These examples show a ' +
+                         'number of the most often used grids in Ext JS.',
+
+            children: [
+                this.getNavItemsGridBasic(),
+                this.getNavItemsGridDecorations(),
+                this.getNavItemsGridAdvanced()
+            ]
+        };
+    },
+
+    /**
+     * Grids/Core Features 核心功能
+     */
+    getNavItemsGridBasic: function () {
+        return {
+            text: 'Core Features',
+            id: 'grid-core',
+            iconCls: 'icon-grids',
+
+            children: [
+                { id: 'simple-grid', text: 'Simple Grid √', leaf: true },
+                { id: 'simple-grid2', text: 'Simple Grid2 √', leaf: true, iconCls: 'icon-direct-arg' },
+                { id: 'array-grid', text: 'Basic Grid √', leaf: true },
+                { id: 'grouped-grid', text: 'Grouped Grid', leaf: true },
+                { id: 'checkbox-selection', text: 'Checkbox Selection Model √', leaf: true },
+                { id: 'row-numberer', text: 'Row Numberer', leaf: true },
+                { id: 'grouped-header-grid', text: 'Grouped Header Grid', leaf: true },
+                { id: 'multi-sort-grid', text: 'Multiple Sort Grid', leaf: true },
+                { id: 'locking-grid', text: 'Locking Grid', leaf: true },
+                { id: 'cell-editing', text: 'Cell Editing', leaf: true },
+                { id: 'row-editing', text: 'Row Editing', leaf: true },
+                { id: 'row-expander-grid', text: 'Row Expander', leaf: true },
+                { id: 'property-grid', text: 'Property Grid', leaf: true },
+                { id: 'xml-grid', text: 'XML Grid', leaf: true }
+            ]
+        };
+    },
+
+    /**
+     * Grids/Add-ons and Decorations  附件元件和装饰
+     */
+    getNavItemsGridDecorations: function () {
+        return {
+            text: 'Add-ons and Decorations',
+            id: 'grid-addons',
+            iconCls: 'icon-framing-buttons',
+
+            children: [
+                { id: 'grid-filtering', text: 'Grid Filtering', leaf: true },
+                { id: 'grid-exporter', text: 'Grid Export', leaf: true, tier: 'premium' },
+                { id: 'paging-grid', text: 'Paging', leaf: true },
+                { id: 'progress-bar-pager', text: 'Progress Bar Pager', leaf: true },
+                { id: 'sliding-pager', text: 'Sliding Pager', leaf: true },
+                { id: 'dd-field-to-grid', text: 'Drag Field to Grid', leaf: true },
+                { id: 'dd-grid-to-form', text: 'Drag Grid to Form', leaf: true },
+                { id: 'dd-grid-to-grid', text: 'Drag Grid to Grid', leaf: true },
+                { id: 'actions-grid', text: 'Reusable Actions', leaf: true }
+            ]
+        };
+    },
+
+    /**
+     * Grids/Advanced Features 高级功能
+     */
+    getNavItemsGridAdvanced: function () {
+        return {
+            text: 'Advanced Features',
+            id: 'grid-advanced',
+            iconCls: 'icon-grid-plugins',
+
+            children: [
+                { id: 'framing-buttons', text: 'Framed with docked toolbars', leaf: true },
+                { id: 'row-widget-grid', text: 'Row Widgets', leaf: true, since: '6.2.0' },
+                { id: 'widget-grid', text: 'Cell Widgets √', leaf: true },
+                { id: 'widget-grid2', text: 'Cell Widgets2 √', leaf: true, iconCls: 'icon-direct-arg' },
+                { id: 'widget-grid3', text: 'Cell Widgets3 √', leaf: true, iconCls: 'icon-direct-arg' },
+                { id: 'expander-lockable', text: 'Row Expander, lockable columns', leaf: true },
+                { id: 'spreadsheet', text: 'Spreadsheet with locking', leaf: true},
+                { id: 'spreadsheet-checked', text: 'Spreadsheet with Checked Rows', leaf: true },
+                { id: 'reconfigure-grid', text: 'Reconfigure Grid', leaf: true },
+                { id: 'big-data-grid', text: 'Big Data', leaf: true },
+                { id: 'ticker-grid', text: 'Ticker Grid', leaf: true }
+            ]
+        };
+    },
+
+    //////////////////////////////////////////////////////////////////
+    /**
+     * Trees 树状组件
+     */
+    getNavItemsTrees: function () {
+        return {
+            text: 'Trees',
+            id: 'trees',
+
+            description: 'Tree Panels provide a tree-structured UI representation of tree-structured data.' +
+                         'Tree Panel\'s built-in expand/collapse nodes offer a whole new set of opportunities' +
+                         'for user interface and data display.',
+            children: [
+                { id: 'simple-tree', text: 'Simple Tree √', leaf: true, iconCls: 'icon-direct-arg' },
+                { id: 'basic-trees', text: 'Basic Trees √', leaf: true },
+                { id: 'tree-reorder', text: 'Tree Reorder √', leaf: true },
+                { id: 'tree-grid', text: 'Tree Grid √', leaf: true },
+                { id: 'tree-grid2', text: 'Tree Grid2 √', leaf: true, iconCls: 'icon-direct-arg' },
+                { id: 'tree-two', text: 'Two Trees', leaf: true },
+                { id: 'check-tree', text: 'Check Tree √', leaf: true },
+                { id: 'filtered-tree', text: 'Filtered Tree', leaf: true },
+                { id: 'heterogeneous-tree', text: 'Heterogeneous Tree', leaf: true },
+                { id: 'lineardata-tree', text: 'Linear Data Geographical Tree', leaf: true },
+                { id: 'tree-list', text: 'Tree List', leaf: true },
+                { id: 'tree-xml', text: 'XML Tree', leaf: true }
+            ]
+        };
+    },
+
+    //////////////////////////////////////////////////////////////
+    /**
+     * Charts 图表
      */
     getNavItemsCharts: function () {
         return {
@@ -319,6 +838,69 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
+    //////////////////////////////////////////////////////////
+    /**
+     * Calendar 日历
+     */
+    getNavItemsCalendar: function () {
+        return {
+            text: 'Calendar',
+            id: 'calendar',
+            tier: 'premium',
+            since: '6.2.0',
+
+            description: 'The calendar family of components allows you to present ' +
+                'schedules and manage event information.',
+
+            children: [
+                { id: 'calendar-panel', text: 'Calendar Panel', leaf: true },
+                { id: 'calendar-month-view', text: 'Month View', leaf: true },
+                { id: 'calendar-week-view', text: 'Week View', leaf: true },
+                { id: 'calendar-days-view', text: 'Days View', leaf: true },
+                { id: 'calendar-timezone', text: 'Timezone Support', leaf: true },
+                { id: 'calendar-validation', text: 'Drag/Resize Validation', leaf: true }
+            ]
+        };
+    },
+
+
+    /////////////////////////////////////////////////////
+    /**
+     * Pivot Grids 透明表
+     */
+    getNavItemsGridPivot: function () {
+        return {
+            text: 'Pivot Grids',
+            id: 'pivot-grids',
+            tier: 'premium',
+
+            description:
+                'The Pivot Grid component enables rapid summarization of large sets of data. ' +
+                'It provides a simple way to condense many data points into a format that ' +
+                'makes trends and insights more apparent.',
+
+            children: [
+                { id: 'outline-pivot-grid', text: 'Outline layout', leaf: true },
+                { id: 'compact-pivot-grid', text: 'Compact layout', leaf: true },
+                { id: 'tabular-pivot-grid', text: 'Tabular layout', leaf: true },
+                { id: 'locked-pivot-grid', text: 'Locked', leaf: true },
+                { id: 'stateful-pivot-grid', text: 'Stateful', leaf: true },
+                { id: 'collapsible-pivot-grid', text: 'Collapsible', leaf: true },
+                { id: 'datachanges-pivot-grid', text: 'Data changes', leaf: true },
+                { id: 'widgets-pivot-grid', text: 'Widgets', leaf: true },
+                { id: 'drilldown-pivot-grid', text: 'DrillDown plugin', leaf: true },
+                { id: 'configurable-pivot-grid', text: 'Configurator plugin', leaf: true },
+                { id: 'cellediting-pivot-grid', text: 'CellEditing plugin', leaf: true },
+                { id: 'rangeeditor-pivot-grid', text: 'RangeEditor plugin', leaf: true },
+                { id: 'exporter-pivot-grid', text: 'Exporter plugin', leaf: true },
+                { id: 'chart-pivot-grid', text: 'Chart integration', leaf: true },
+                { id: 'grandtotals-pivot-grid', text: 'Custom grand totals', leaf: true },
+                { id: 'remote-pivot-grid', text: 'Remote calculations', leaf: true }
+            ]
+        };
+    },
+
+    ///////////////////////////////////////////////////////
     /**
      * D3
      */
@@ -388,570 +970,4 @@ Ext.define('MyKitchen.store.Navigation', {
         };
     },
 
-    /**
-     * Components
-     */
-    getNavItemsGeneral: function () {
-        var me = this;
-        return {
-            text: 'Components',
-            id: 'components',
-            expanded: true,
-            iconCls: 'icon-state-saving',
-            description: 'Ext JS provides a wide variety of other, simpler components.',
-
-            children: [
-                me.getNavItemsButtons(),
-                me.getNavItemsDataBinding(),
-                me.getNavItemsDataView(),
-                me.getNavItemsDragDrop(),
-                me.getNavItemsExtDirect(),
-                me.getNavItemsFormFields(),
-                me.getNavItemsForms(),
-                me.getNavItemsLayouts(),
-                me.getNavItemsPanels(),
-                me.getNavItemsTabs(),
-                me.getNavItemsTips(),
-                me.getNavItemsToolbars(),
-                me.getNavItemsWindows(),
-                me.getNavItemsGauge(),
-                me.getNavItemsEnterprise()
-            ]
-        };
-    },
-
-    /**
-     * Components/Buttons
-     */
-    getNavItemsButtons: function () {
-        return {
-            text: 'Buttons',
-            id: 'buttons',
-
-            description: 'Buttons are a utilitarian component of Ext JS. From forms to grid row widgets, ' +
-                         'they can be used in nearly any application for user interaction and directing usability.',
-            children: [
-                { id: 'basic-buttons', text: 'Basic Buttons', leaf: true },
-                { id: 'toggle-buttons', text: 'Toggle Buttons', leaf: true },
-                { id: 'menu-buttons', text: 'Menu Buttons', leaf: true },
-                { id: 'menu-bottom-buttons', text: 'Menu Bottom Buttons', leaf: true },
-                { id: 'split-buttons', text: 'Split Buttons', leaf: true },
-                { id: 'split-bottom-buttons', text: 'Split Bottom Buttons', leaf: true },
-                { id: 'left-text-buttons', text: 'Left Text Buttons', leaf: true },
-                { id: 'right-text-buttons', text: 'Right Text Buttons', leaf: true },
-                { id: 'link-buttons', text: 'Link Buttons', leaf: true },
-                { id: 'segmented-buttons', text: 'Segmented Buttons', leaf: true },
-                { id: 'vertical-segmented-buttons', text: 'Vertical Segmented Buttons', leaf: true }
-            ]
-        };
-    },
-
-    /**
-     * Components/Data Binding
-     */
-    getNavItemsDataBinding: function () {
-        return {
-            text: 'Data Binding',
-            id: 'data-binding',
-
-            description: 'Data binding, and the ViewModel that powers it, are powerful pieces of Ext JS. ' +
-                         'Together, they enable you to create a seamless connection between your application UI ' +
-                         'and your business logic.',
-            children: [
-                { id: 'binding-hello-world', text: 'Hello World', leaf: true },
-                { id: 'binding-dynamic', text: 'Dynamic', leaf: true },
-                { id: 'binding-two-way', text: 'Two Way', leaf: true },
-                { id: 'binding-formulas', text: 'Formulas', leaf: true },
-                { id: 'binding-associations', text: 'Associations', leaf: true },
-                { id: 'binding-component-state', text: 'Component State', leaf: true },
-                { id: 'binding-chained-stores', text: 'Chaining Stores', leaf: true},
-                { id: 'binding-combo-chaining', text: 'Chained ComboBoxes', leaf: true },
-                { id: 'binding-selection', text: 'Chaining Selection', leaf: true },
-                //{ id: 'binding-gridform', text: 'Grid + Form', leaf: true },
-                { id: 'binding-model-validation', text: 'Model Validation', leaf: true },
-                { id: 'binding-field-validation', text: 'Field Validation', leaf: true },
-                { id: 'binding-two-way-formulas', text: 'Two-Way Formulas', leaf: true },
-                { id: 'binding-slider-form', text: 'Slider and Form Fields', leaf: true },
-                { id: 'binding-child-session', text: 'Isolated Child Sessions', leaf: true },
-                { id: 'binding-algebra-binary', text: 'Binary Operators', leaf: true },
-                { id: 'binding-algebra-ternary', text: 'Ternary Operators', leaf: true },
-                { id: 'binding-algebra-formatters', text: 'Formatters', leaf: true },
-                { id: 'binding-algebra-unary', text: 'Unary Operators', leaf: true }
-            ]
-        };
-    },
-
-    /**
-     * DataView
-     */
-    getNavItemsDataView: function () {
-        return {
-            text: 'DataView',
-            id: 'data-view',
-
-            description: 'Dataviews are an XTemplate based mechanism for displaying data using custom layout' +
-                         'templates and formatting. They can connect to any store and display data in any way' +
-                         'you see fit.',
-            children: [
-                { id: 'dataview-multisort', text: 'Multisort DataView', leaf: true }
-            ]
-        };
-    },
-
-    /**
-     * Drag & Drop
-     */
-    getNavItemsDragDrop: function () {
-        // id: 'drag-drop-grid',
-        // id: 'drag-drop-element',
-
-        return {
-            text: 'Drag & Drop',
-            id: 'drag-drop',
-
-            description: 'Drag and Drop functionality gives developers the ability to ' +
-                'create interactive interfaces for their users.',
-
-            children: [
-                { id: 'drag-simple', text: 'Simple', leaf: true },
-                { id: 'drag-constraint', text: 'Constraints', leaf: true },
-                { id: 'drag-proxy', text: 'Proxies', leaf: true },
-                { id: 'drag-handle', text: 'Handles', leaf: true },
-                { id: 'drag-group', text: 'Groups', leaf: true },
-                { id: 'drag-data', text: 'Data', leaf: true },
-                { id: 'drag-file', text: 'Files', iconCls: 'icon-drag-drop-element', leaf: true }
-            ]
-        };
-    },
-
-    /**
-     * Ext Direct
-     */
-    getNavItemsExtDirect: function () {
-        return {
-            text: 'Ext Direct',
-            id: 'direct',
-
-            description: 'Ext Direct streamlines communication between the client and server by providing a single ' +
-                         'interface that reduces much of the common code required to validate and handle data.',
-
-            children: [
-                { id: 'direct-grid', text: 'Grid with Direct store', leaf: true },
-                { id: 'direct-tree', text: 'Tree with dynamic nodes', leaf: true },
-                { id: 'direct-form', text: 'Form load and submit actions', leaf: true },
-                { id: 'direct-generic', text: 'Generic remoting and polling', leaf: true },
-                { id: 'direct-named', text: 'Custom form processing', leaf: true }
-            ]
-        };
-    },
-
-    /**
-     * Enterprise
-     */
-    getNavItemsEnterprise: function () {
-        return {
-            text: 'Enterprise',
-            id: 'enterprise',
-
-            description: 'Our Enterprise tools offer developers the ability to easily ' +
-                'utilize data interfaces such as SOAP and AMF.',
-
-            children: [
-                { id: 'amf-grid', text: 'AMF Grid', leaf: true },
-                { id: 'soap-grid', text: 'SOAP Grid', leaf: true }
-            ]
-        };
-    },
-
-    /**
-     * Form Fields
-     */
-    getNavItemsFormFields: function () {
-        return {
-            text: 'Form Fields',
-            id: 'form-fields',
-
-            description: 'Form Fields offer developers standard HTML form fields with built-in event handling, ' +
-                         'rendering, and other common functionality you may require. Variations of fields include: ' +
-                         'textfields, textareas, htmleditors, radio groups, checkboxes, and more!',
-            children: [
-                { id: 'form-number', text: 'Number Field', leaf: true },
-                { id: 'form-date', text: 'Date/Month Picker', leaf: true },
-                {
-                    id: 'combo-boxes',
-                    text: 'ComboBoxes',
-                    leaf: false,
-
-                    description: 'These examples demonstrate that ComboBoxes can use any type of ' +
-                            'Ext.data.Store as a data souce. This means your data can be XML, JSON, '+
-                            'arrays or any other supported format. It can be loaded using Ajax, JSONP or locally.',
-
-                    children: [
-                        {id: 'simple-combo', text: 'Simple ComboBox', leaf: true },
-                        {id: 'remote-combo', text: 'Remote Query ComboBox', leaf: true },
-                        {id: 'remote-loaded-combo', text: 'Remote loaded ComboBox', leaf: true },
-                        {id: 'custom-template-combo', text: 'Custom Template ComboBox', leaf: true }
-                    ]
-                },
-                { id: 'form-fileuploads', text: 'File Uploads', leaf: true },
-                { id: 'form-fieldreplicator', text: 'Field Replicator', leaf: true },
-                { id: 'form-grid', text: 'Form with Grid', leaf: true },
-                { id: 'form-tag', text: 'Tag Field', leaf: true },
-                { id: 'multi-selector', text: 'Multi-Selector Grid', leaf: true },
-                { id: 'form-fieldtypes', text: 'Field Types', leaf: true},
-                { id: 'form-fieldcontainer', text: 'Field Container', leaf: true},
-                { id: 'form-checkboxgroup', text: 'Checkbox Groups', leaf: true },
-                { id: 'form-radiogroup', text: 'Radio Groups', leaf: true },
-                { id: 'slider-field', text: 'Slider Field', leaf: true }
-            ]
-        };
-    },
-
-    /**
-     * Forms
-     */
-    getNavItemsForms: function () {
-        return {
-            text: 'Forms',
-            id: 'forms',
-
-            description: 'Form Panel extends panel to offer developers the ability to manage data collection in a ' +
-                         'simple and straightforward manner. Field display and handling can be configured in almost ' +
-                         'any conceivable fashion and offers default objects to minimize repetitive code.',
-            children: [
-                { id: 'form-login', text: 'Login Form', leaf: true },
-                { id: 'form-contact', text: 'Contact Form', leaf: true },
-                { id: 'form-register', text: 'Register Form', leaf: true  },
-                { id: 'form-checkout', text: 'Checkout Form', leaf: true },
-                { id: 'form-color-picker', text: 'Color Picker', leaf: true},
-                { id: 'form-rating', text: 'Rating Form', leaf: true},
-                { id: 'form-vboxlayout', text: 'VBox Layout', leaf: true },
-                { id: 'form-hboxlayout', text: 'HBox Layout', leaf: true },
-                { id: 'form-multicolumn', text: 'Multi Column Form', leaf: true },
-                { id: 'form-xml', text: 'XML Form', leaf: true },
-                { id: 'form-advtypes', text: 'Custom VTypes', leaf: true },
-                { id: 'form-customfields', text: 'Custom fields', leaf: true },
-                { id: 'form-forumsearch', text: 'Forum Search', leaf: true },
-                { id: 'form-customerrors', text: 'Custom Error Handling', leaf: true }
-            ]
-        };
-    },
-
-    /**
-     * Gauges
-     */
-    getNavItemsGauge: function () {
-        return {
-            text: 'Gauges',
-            id: 'gauges',
-            iconCls: 'icon-gauge-charts', // TODO
-
-            description: 'The gauge component is a flexible progress bar that displays ' +
-                'its value in a circular form. The gauge is similar to a gauge chart ' +
-                'except that there is no axis.',
-            children: [
-                { id: 'default-gauge', iconCls: 'icon-gauge-basic', text: 'Gauge', leaf: true }
-            ],
-
-            compat: !Ext.isIE8
-        };
-    },
-
-    /**
-     * Layouts
-     */
-    getNavItemsLayouts: function () {
-        return {
-            text: 'Layouts',
-            id: 'layouts',
-
-            description: 'Layouts can be considered the heart and soul of Ext JS. They manage the DOM flow and ' +
-                         'display of your content. There are multiple layout options that should satisfy almost' +
-                         'any application wireframe.',
-            children: [
-                { id: 'layout-absolute', text: 'Absolute Layout', leaf: true },
-                { id: 'layout-accordion', text: 'Accordion Layout', leaf: true },
-                { id: 'layout-border', text: 'Border Layout', leaf: true },
-                { id: 'layout-card', text: 'Card Layout', leaf: true },
-                { id: 'layout-cardtabs', text: 'Card (Tabs)', leaf: true },
-                { id: 'layout-center', text: 'Center Layout', leaf: true },
-                { id: 'layout-column', text: 'Column Layout', leaf: true },
-                { id: 'layout-fit', text: 'Fit Layout', leaf: true },
-                { id: 'layout-horizontal-box', text: 'HBox Layout', leaf: true },
-                { id: 'layout-table', text: 'Table Layout', leaf: true },
-                { id: 'layout-vertical-box', text: 'VBox Layout', leaf: true }
-            ]
-        };
-    },
-
-    /**
-     * Panels
-     */
-    getNavItemsPanels: function () {
-        return {
-            text: 'Panels',
-            id: 'panels',
-            // iconCls: 'icon-windows',
-
-            description: 'Panels are the basic container that makes up the structure ' +
-                'of most applications. Panels have a header and body, and can be arranged ' +
-                'in various ways using layouts.',
-
-            children: [
-                { id: 'basic-panels', text: 'Basic Panel', leaf: true },
-                { id: 'panel-header', text: 'Panel with Header', leaf: true, iconCls: 'icon-direct-arg' },
-                { id: 'framed-panels', text: 'Framed Panel', leaf: true },
-                { id: 'panel-header-position', text: 'Header Positioning', leaf: true }
-            ]
-        };
-    },
-
-    /**
-     * Windows
-     */
-    getNavItemsWindows: function () {
-        return {
-            text: 'Windows',
-            id: 'windows',
-            // iconCls: 'icon-windows',
-
-            description: 'Windows are specialized panels, intended to be used as floating, ' +
-            'resizable, and draggable containers in your application.',
-
-            children: [
-                { id: 'basic-window', text: 'Basic Window', leaf: true },
-                { id: 'message-box', text: 'Message Box', leaf: true },
-                { id: 'window-variations', text: 'Window Variations', iconCls: 'icon-window', leaf: true },
-                { id: 'toast-view', text: 'Ext.Toast', leaf: true }
-            ]
-        };
-    },
-
-    /**
-     * Tabs
-     */
-    getNavItemsTabs: function () {
-        return {
-            text: 'Tabs',
-            id: 'tabs',
-
-            description: 'Tab Panels are panels that have extended support for containing and displaying children ' +
-                         'items. These children are managed using a Card Layout and are shown as tabulated content.',
-            children: [
-                { id: 'basic-tabs', text: 'Basic Tabs', leaf: true },
-                { id: 'plain-tabs', text: 'Plain Tabs', leaf: true },
-                { id: 'framed-tabs', text: 'Framed Tabs', leaf: true },
-                { id: 'icon-tabs', text: 'Icon Tabs', leaf: true },
-                { id: 'ajax-tabs', text: 'Ajax Tabs', leaf: true },
-                { id: 'advanced-tabs', text: 'Advanced Tabs', leaf: true },
-                { id: 'lazy-tabs', text: 'Lazy Instantiating Tabs', leaf: true},
-                { id: 'navigation-tabs', text: 'Navigation Tabs', leaf: true },
-                { id: 'side-navigation-tabs', text: 'Side Navigation Tabs', leaf: true },
-                { id: 'header-tabs', text: 'Header Tabs', leaf: true },
-                { id: 'reorderable-tabs', text: 'Reorderable Tabs', leaf: true }
-            ]
-        };
-    },
-
-    /**
-     * Tooltips
-     */
-    getNavItemsTips: function () {
-        return {
-            text: 'Tooltips',
-            id: 'tooltips',
-
-            description: 'Tooltip examples',
-            
-            children: [{
-                id: 'anchored-tooltips', text: 'Anchored ToolTips', leaf: true
-            }, {
-                id: 'mousetrack-tooltips', text: 'Mouse Tracking ToolTips', leaf: true, compat: Ext.platformTags.desktop
-            }, {
-                id: 'html-tooltips', text: 'Tooltips embedded in HTML', leaf: true
-            }, {
-                id: 'tip-aligning', text: 'Tooltip align options', leaf: true
-            }, {
-                id: 'closable-tooltips', text: 'Closable ToolTips', leaf: true
-            }]
-        };
-    },
-
-    /**
-     * Toolbars
-     */
-    getNavItemsToolbars: function () {
-        return {
-            text: 'Toolbars',
-            id: 'toolbars',
-
-            description: 'Toolbars are easily customizable components that give developers a simple way to display ' +
-                         'a variety of user interfaces.',
-            children: [
-                { id: 'basic-toolbar', text: 'Reorderable Toolbar', leaf: true },
-                { id: 'docked-toolbars', text: 'Docked Toolbar', leaf: true },
-                { id: 'breadcrumb-toolbar', text: 'Breadcrumb Toolbar', leaf: true },
-                { id: 'toolbar-overflow', text: 'Toolbar Overflow', leaf: true },
-                { id: 'statusbar-demo', text: 'StatusBar', leaf: true },
-                { id: 'toolbar-menus', text: 'Toolbar with Menus', leaf: true }
-            ]
-        };
-    },
-
-    /**
-     * Grids
-     */
-    getNavItemsGrid: function () {
-        return {
-            text: 'Grids',
-            id: 'grids',
-            expanded: true,
-
-            description: 'Grids are one of the centerpieces of Ext JS. They are incredibly versatile components ' +
-                         'that provide an easy path to display, sort, group, and edit data. These examples show a ' +
-                         'number of the most often used grids in Ext JS.',
-
-            children: [
-                this.getNavItemsGridBasic(),
-                this.getNavItemsGridDecorations(),
-                this.getNavItemsGridAdvanced()
-            ]
-        };
-    },
-
-    /**
-     * Advanced Features
-     */
-    getNavItemsGridAdvanced: function () {
-        return {
-            text: 'Advanced Features',
-            id: 'grid-advanced',
-            iconCls: 'icon-grid-plugins',
-
-            children: [
-                { id: 'framing-buttons', text: 'Framed with docked toolbars', leaf: true },
-                { id: 'row-widget-grid', text: 'Row Widgets', leaf: true, since: '6.2.0' },
-                { id: 'widget-grid', text: 'Cell Widgets', leaf: true },
-                { id: 'expander-lockable', text: 'Row Expander, lockable columns', leaf: true },
-                { id: 'spreadsheet', text: 'Spreadsheet with locking', leaf: true},
-                { id: 'spreadsheet-checked', text: 'Spreadsheet with Checked Rows', leaf: true },
-                { id: 'reconfigure-grid', text: 'Reconfigure Grid', leaf: true },
-                { id: 'big-data-grid', text: 'Big Data', leaf: true },
-                { id: 'ticker-grid', text: 'Ticker Grid', leaf: true }
-            ]
-        };
-    },
-
-    /**
-     * Core Features
-     */
-    getNavItemsGridBasic: function () {
-        return {
-            text: 'Core Features',
-            id: 'grid-core',
-            iconCls: 'icon-grids',
-
-            children: [
-                { id: 'simple-grid', text: 'Simple Grid', leaf: true },
-                { id: 'simple-grid2', text: 'Simple Grid2', leaf: true, iconCls: 'icon-direct-arg' },
-                { id: 'array-grid', text: 'Basic Grid', leaf: true },
-                { id: 'grouped-grid', text: 'Grouped Grid', leaf: true },
-                { id: 'checkbox-selection', text: 'Checkbox Selection Model', leaf: true },
-                { id: 'row-numberer', text: 'Row Numberer', leaf: true },
-                { id: 'grouped-header-grid', text: 'Grouped Header Grid', leaf: true },
-                { id: 'multi-sort-grid', text: 'Multiple Sort Grid', leaf: true },
-                { id: 'locking-grid', text: 'Locking Grid', leaf: true },
-                { id: 'cell-editing', text: 'Cell Editing', leaf: true },
-                { id: 'row-editing', text: 'Row Editing', leaf: true },
-                { id: 'row-expander-grid', text: 'Row Expander', leaf: true },
-                { id: 'property-grid', text: 'Property Grid', leaf: true },
-                { id: 'xml-grid', text: 'XML Grid', leaf: true }
-            ]
-        };
-    },
-
-    /**
-     * Add-ons and Decorations
-     */
-    getNavItemsGridDecorations: function () {
-        return {
-            text: 'Add-ons and Decorations',
-            id: 'grid-addons',
-            iconCls: 'icon-framing-buttons',
-
-            children: [
-                { id: 'grid-filtering', text: 'Grid Filtering', leaf: true },
-                { id: 'grid-exporter', text: 'Grid Export', leaf: true, tier: 'premium' },
-                { id: 'paging-grid', text: 'Paging', leaf: true },
-                { id: 'progress-bar-pager', text: 'Progress Bar Pager', leaf: true },
-                { id: 'sliding-pager', text: 'Sliding Pager', leaf: true },
-                { id: 'dd-field-to-grid', text: 'Drag Field to Grid', leaf: true },
-                { id: 'dd-grid-to-form', text: 'Drag Grid to Form', leaf: true },
-                { id: 'dd-grid-to-grid', text: 'Drag Grid to Grid', leaf: true },
-                { id: 'actions-grid', text: 'Reusable Actions', leaf: true }
-            ]
-        };
-    },
-
-    /**
-     * Pivot Grids
-     */
-    getNavItemsGridPivot: function () {
-        return {
-            text: 'Pivot Grids',
-            id: 'pivot-grids',
-            tier: 'premium',
-
-            description:
-                'The Pivot Grid component enables rapid summarization of large sets of data. ' +
-                'It provides a simple way to condense many data points into a format that ' +
-                'makes trends and insights more apparent.',
-
-            children: [
-                { id: 'outline-pivot-grid', text: 'Outline layout', leaf: true },
-                { id: 'compact-pivot-grid', text: 'Compact layout', leaf: true },
-                { id: 'tabular-pivot-grid', text: 'Tabular layout', leaf: true },
-                { id: 'locked-pivot-grid', text: 'Locked', leaf: true },
-                { id: 'stateful-pivot-grid', text: 'Stateful', leaf: true },
-                { id: 'collapsible-pivot-grid', text: 'Collapsible', leaf: true },
-                { id: 'datachanges-pivot-grid', text: 'Data changes', leaf: true },
-                { id: 'widgets-pivot-grid', text: 'Widgets', leaf: true },
-                { id: 'drilldown-pivot-grid', text: 'DrillDown plugin', leaf: true },
-                { id: 'configurable-pivot-grid', text: 'Configurator plugin', leaf: true },
-                { id: 'cellediting-pivot-grid', text: 'CellEditing plugin', leaf: true },
-                { id: 'rangeeditor-pivot-grid', text: 'RangeEditor plugin', leaf: true },
-                { id: 'exporter-pivot-grid', text: 'Exporter plugin', leaf: true },
-                { id: 'chart-pivot-grid', text: 'Chart integration', leaf: true },
-                { id: 'grandtotals-pivot-grid', text: 'Custom grand totals', leaf: true },
-                { id: 'remote-pivot-grid', text: 'Remote calculations', leaf: true }
-            ]
-        };
-    },
-
-    /**
-     * Trees
-     */
-    getNavItemsTrees: function () {
-        return {
-            text: 'Trees',
-            id: 'trees',
-
-            description: 'Tree Panels provide a tree-structured UI representation of tree-structured data.' +
-                         'Tree Panel\'s built-in expand/collapse nodes offer a whole new set of opportunities' +
-                         'for user interface and data display.',
-            children: [
-                { id: 'basic-trees', text: 'Basic Trees', leaf: true },
-                { id: 'tree-reorder', text: 'Tree Reorder', leaf: true },
-                { id: 'tree-grid', text: 'Tree Grid', leaf: true },
-                { id: 'tree-two', text: 'Two Trees', leaf: true },
-                { id: 'check-tree', text: 'Check Tree', leaf: true },
-                { id: 'filtered-tree', text: 'Filtered Tree', leaf: true },
-                { id: 'heterogeneous-tree', text: 'Heterogeneous Tree', leaf: true },
-                { id: 'lineardata-tree', text: 'Linear Data Geographical Tree', leaf: true },
-
-                { id: 'tree-list', text: 'Tree List', leaf: true },
-                { id: 'tree-xml', text: 'XML Tree', leaf: true }
-            ]
-        };
-    }
 });

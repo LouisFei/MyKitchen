@@ -1,5 +1,6 @@
 /**
  * A mixin to allow any class to configure and listen to routes and also change the hash.
+ * 这个路由混合物的类，允许任何类配置和监听路由，并且可以修改浏览器hash散列值。
  */
 Ext.define('Ext.route.Mixin', {
     extend: 'Ext.Mixin',
@@ -31,7 +32,9 @@ Ext.define('Ext.route.Mixin', {
          * is the method on the controller to execute. The parameters will get sent in the action method.
          *
          * If no routes match a given hash, an {@link Ext.GlobalEvents#unmatchedroute} event will be fired.
+         * 如果设置的路由配置没有匹配到给的hash散列，则unmatchedroute事件将被触发。
          * This can be listened to in four ways:
+         * 下面是监听的方法，可以作为默认的路由处理：
          *
          *     Ext.on('unmatchedroute', function(token) {});
          *
@@ -240,6 +243,9 @@ Ext.define('Ext.route.Mixin', {
     },
 
     /**
+     * 更新hash散列。
+     * 默认，如果跳转的hash与当前的token相同的话，它将不执行路由配置。
+     * 
      * Update the hash. By default, it will not execute the routes if the current token and the
      * token passed are the same.
      *

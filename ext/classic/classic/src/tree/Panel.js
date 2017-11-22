@@ -478,6 +478,11 @@ Ext.define('Ext.tree.Panel', {
         ]);
     },
 
+    /**
+     * 私有方法
+     * 请注意,这不是一个配置系统灌肠器。商店还没有配置。
+     * 它只是灌肠器的工作和将一个配置对象转换为使用setter的真正价值。
+     */
     applyStore: function(store) {
         // private
         // Note that this is not a config system applier. store is not yet a config.

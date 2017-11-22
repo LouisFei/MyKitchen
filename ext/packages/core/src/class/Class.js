@@ -35,6 +35,7 @@
         };
 
     // Creates a constructor that has nothing extra in its scope chain.
+    // 创建一个构造函数
     function makeCtor (className) {
         function constructor () {
             // Opera has some problems returning from a constructor when Dragonfly isn't running. The || null seems to

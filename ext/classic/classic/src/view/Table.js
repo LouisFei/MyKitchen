@@ -1647,6 +1647,7 @@ Ext.define('Ext.view.Table', {
     /**
      * @private
      * Emits the HTML representing a single grid cell into the passed output stream (which is an array of strings).
+     * 输出一个表格的单元格的HTML字符串。
      *
      * @param {Ext.grid.column.Column} column The column definition for which to render a cell.
      * @param {Ext.data.Model} record The record

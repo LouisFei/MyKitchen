@@ -1,6 +1,7 @@
 /**
  * In-memory proxy. This proxy simply uses a local variable for data storage/retrieval, so its contents are lost on
  * every page refresh.
+ * 内存模式代理，这个代理简单地使用一个本地变量来进行数据存储，当页面刷新时，数据将被重置。
  *
  * Usually this Proxy isn't used directly, serving instead as a helper to a {@link Ext.data.Store Store} where a reader
  * is required to load data. For example, say we have a Store for a User model and have some inline data we want to

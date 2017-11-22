@@ -1,10 +1,13 @@
 /**
  * Grids are an excellent way of showing large amounts of tabular data on the client side.
+ * Grid是一种在客户端显示大量扁平数据的极好的方式。
  * Essentially a supercharged `<table>`, GridPanel makes it easy to fetch, sort and filter
  * large amounts of data.
+ * 本质上Grid是一个增强型的table，GridPanel让它更容易获取数据，排序和过滤大量的数据。
  *
  * Grids are composed of two main pieces - a {@link Ext.data.Store Store} full of data and
  * a set of columns to render.
+ * Grid组合了两个主要部件————Store（数据）和列集合（用于绘制渲染）。
  *
  * ## Basic GridPanel
  *
@@ -35,6 +38,7 @@
  *
  * The code above produces a simple grid with three columns. We specified a Store which
  * will load JSON data inline.
+ * 上面的代码创建了一个简单的gird，它包含了三个列。我们指定了一个store，它加载了内嵌的json数据。
  * In most apps we would be placing the grid inside another container and wouldn't need to
  * use the {@link #height}, {@link #width} and {@link #renderTo} configurations but they
  * are included here to make it easy to get up and running.

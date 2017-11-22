@@ -2,6 +2,9 @@
  * Controllers are the glue that binds an application together. That said, their main
  * purpose is to listen for events (usually from views) and take some action. Here's how
  * we might create a Controller to manage Users:
+ * 
+ * 控制器是使应用程序绑定在一起的胶水。就是说，他们主要的用途是监听事件（通常是视图中的事件），做出一些动作。
+ * 下面是示例：
  *
  *      Ext.define('MyApp.controller.Users', {
  *          extend: 'Ext.app.Controller',

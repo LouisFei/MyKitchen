@@ -1,11 +1,329 @@
 /**
+ * 组件选择器
+ * 
+ * ExtJs ComponentQuery 组件选择器
+ https://www.cnblogs.com/daxin/archive/2013/06/01/3112530.html
+ ID选择器
+根据组件id来选择组件，具有唯一性。前面以”#”号来标志,返回itemid或者id为“panel”的组件实例
+
+var panel = Ext.ComponentQuery.query('#panel');
+
+类别选择器
+类选择器根据类的xtype来选择，可选择前面是否以”.”来标志，如：根据xtype返回所有Ext.GridPanel实例
+
+var cmp= Ext.ComponentQuery.query('gridpanel');
+
+var cmp= Ext.ComponentQuery.query('.gridpanel');
+
+panel#myPanel 可以通过xtype与id,itemId组件匹配 查找xtype为panel并且id或者itemId为myPanel的所有组件
+
+属性选择器
+根据组件的属性来选择，可以选择具有某个属性的组件，或者属性为特定值的组件。
+
+var btnOk= Ext.ComponentQuery.query('button[iconCls]'); -返回具有iconCls属性的Ext.Button的实例
+
+Ext.ComponentQuery.query('component[autoScroll]') - 匹配xtype为component的所有组件,并且autoScroll不等于空,不等于false.
+
+
+也可以选择某个属性为特定值的组件
+
+var btnOk= Ext.ComponentQuery.query('button[text = "ok"]'); -返回text属性为“ok”的Ext.Button的实例
+
+ 
+
+值得注意的是,属性可以是任何自定义属性
+
+             Ext.create("Ext.Panel", {
+                myAttribute: "helloWorld"
+             });
+Ext.ComponentQuery.query('panel[myAttribute= "helloWorld"]'); -自定义属性也可以匹配的到
+
+后代选择器
+后代选择器也称为包含选择器，用来选择特定容器或容器组的后代，后代选择器由两个常用选择器，中间加一个空格表示。其中前面的选择器选择父组件，后面的选择器选择后代组件。
+
+var panelsWithinmyCt = Ext.ComponentQuery.query('#myCt panel'); --返回所有id为“myCt”的容器中Ext.Panel实例
+
+E F All descendant Components of E that match F (官方说明-递归向下查询所有可以匹配的组件)
+
+子选择器
+请注意这个选择器与后代选择器的区别，子选择器（child selector）仅是指它的直接后代，而后代选择器是作用于所有子后代组件。后代选择器通过空格来进行选择，而子选择器是通过“>”进行选择，我们看下面的代码：
+
+var directChildPanel = Ext.ComponentQuery.query('#myCt > panel'); --返回所有id为“myCt”的容器的子组件中的Ext.Panel实例
+
+E > F All direct children Components of E that match F (官方说明-查询直接后代,子孙后代则不匹配)
+
+复制代码
+             Ext.create("Ext.Panel", {
+                 itemId: "myCt",
+                 itmes:[{
+                     xtype: "panel",
+                     html : "我是myCt的直接后代",
+                     itmes: [{
+                         xtype: "panel",
+                         html : "我是myCt的子孙后代",
+                     }]
+                 }]
+             });
+复制代码
+向上选择
+E ^ F All parent Components of E that match F
+
+Ext.ComponentQuery.query('textfield ^ form') 查找给定元素 的父容器 （递归向上查找所有匹配元素)
+
+ 
+
+Attribute matching operators(属性匹配运算符)
+The '=' operator will return the results that exactly match the specified object property (attribute):
+
+Ext.ComponentQuery.query('panel[cls=my-cls]'); --精确匹配,匹配xtype为panel的元素,并且cls='my-cls'
+
+会匹配如下组件:
+
+Ext.create('Ext.window.Window', {
+    cls: 'my-cls'
+})
+ 
+
+但是不会匹配如下组件:
+
+Ext.create('Ext.panel.Panel', {
+    cls: 'foo-cls my-cls bar-cls'
+});
+ 
+
+You can use the '~=' operator instead, it will return Components with the property that exactly matches one of the whitespace-separated values. This is also true for properties that only have one value:
+
+Ext.ComponentQuery.query('panel[cls~=my-cls]'); --匹配xtype为panel 并且cls='my-cls' 或者 cls 包含 'my-cls'的所有组件
+
+会匹配下列组件
+
+ 
+
+复制代码
+Ext.create('Ext.panel.Panel', {
+    cls: 'foo-cls my-cls bar-cls'
+});
+
+Ext.create('Ext.window.Window', {
+    cls: 'my-cls'
+});
+复制代码
+
+Ext.ComponentQuery.query('panel[title^=Sales]');--匹配xtype为panle 并且 title已Sales开头的组件
+
+Ext.create('Ext.panel.Panel', {
+    title: 'Sales estimate for Q4'
+});
+ 
+
+Ext.ComponentQuery.query('field[fieldLabel$=name]'); ----匹配属性以给定值结尾的组件
+
+Ext.create('Ext.form.field.Text', {
+    fieldLabel: 'Enter your name'
+});
+ 
+
+*= 表达式会匹配属性中包含某个值 无论出现在什么地方都可以匹配
+Ext.ComponentQuery.query('Ext.ComponentQuery.query('panel[fuck*=NameIs])');
+
+            var p = Ext.create("Ext.panel.Panel", {
+                mytest: "myNameIsJack",
+                width: 300,
+                height: 200
+            });
+ 
+
+@=表达式会匹配组件显示声明的属性,不会去查询原型链中的属性
+
+The following test will find panels with their ownProperty collapsed being equal to false. It will not match a collapsed property from the prototype chain
+
+Ext.ComponentQuery.query('panel[@collapsed=false]')
+
+会匹配如下组件
+
+            Ext.create('Ext.panel.Panel', {
+                collapsed: false
+            });
+不会匹配下面的情况,不会通过prototype-china链进行查找
+
+            Ext.create('Ext.panel.Panel', {
+            });
+ 
+
+var disabledFields = myFormPanel.query("{isDisabled()}"); --可以根据组件的方法进行查找,返回所有isDisabled()返回true的组件
+
+有的时候我们需要自定义的逻辑进行匹配,那么我们可以再组件中定义我们自己的方法.如下:
+
+Ext.ComponentQuery.query("{myMatcher('myPanel')}"); 
+
+但是需要注意必须在所有组件中声明该方法,不然会出现异常.所以我们可以override Ext.Component这个类,默认返回false.然后再子类重写该方法 如下:
+
+复制代码
+ Ext.define('My.Component', {
+     override: 'Ext.Component',
+     myMatcher: function() { return false; }
+ });
+
+ Ext.define('My.Panel', {
+     extend: 'Ext.panel.Panel',
+     requires: ['My.Component'],     // Ensure that Component override is applied
+     myMatcher: function(selector) {
+         return selector === 'myPanel';
+     }
+ });
+复制代码
+ 
+
+Conditional matching(条件匹配)
+Attribute matchers can be combined to select only Components that match all conditions (logical AND operator):
+
+匹配同时满足多个条件的匹配表达式
+
+Ext.ComponentQuery.query('panel[cls~=my-cls][floating=true][title$="sales data"]');
+
+//匹配xtype为panel的 并且同时满足[cls~=my-cls][floating=true][title$="sales data"]条件的所有组件
+
+ 
+
+Expressions separated with commas will match any Component that satisfies either expression (logical OR operator):
+
+匹配用逗号分隔的满足任意一个条件的组件
+
+Ext.ComponentQuery.query('field[fieldLabel^=User], field[fieldLabel*=password]');
+
+//匹配俩种条件field[fieldLabel^=User], field[fieldLabel*=password] 其中的一种条件,或者的关系.只要满足其中一个就匹配得到
+
+ 
+
+ 
+
+ 
+
+Pseudo classes(伪类选择器)
+:first
+
+// 查询满足条件的第一个元素
+
+Ext.ComponentQuery.query('panel > button:first');
+
+ 
+
+:last 
+
+//查询满足条件的最后一个元素
+
+Ext.ComponentQuery.query('form[title=Profile] field:last');
+
+ 
+
+:focusable 
+
+//返回可以获得焦点的组件
+
+panel.down(':focusable').focus();
+
+ 
+
+:not
+
+//给定一个选择器,匹配相反的结果,返回所有field 但是xtype不是hiddenfield的组件
+
+form.query('field:not(hiddenfield)');
+
+红色部分可以放任何选择器表达式 比如 title^=hello
+
+ 
+
+:nth-child 查询奇数，偶数 每隔3个
+
+ 
+
+复制代码
+// Find every odd field in a form
+ form.query('field:nth-child(2n+1)'); // or use shortcut: :nth-child(odd)
+
+ // Find every even field in a form
+ form.query('field:nth-child(2n)');   // or use shortcut: :nth-child(even)
+
+ // Find every 3rd field in a form
+ form.query('field:nth-child(3n)');
+复制代码
+ 
+
+自定义选择器 
+//定义一个筛选的方法
+
+复制代码
+// Function receives array and returns a filtered array.
+Ext.ComponentQuery.pseudos.invalid = function(items) {
+    var i = 0, l = items.length, c, result = [];
+    for (; i < l; i++) {
+        if (!(c = items[i]).isValid()) {
+            result.push(c);
+        }
+    }
+    return result;
+};
+复制代码
+//使用前面构造的方法进行查询
+var invalidFields = Ext.ComponentQuery.query('field:invalid', myFormPanel);
+
+ 
+
+//还可以给自定义的选择器穿参数
+
+复制代码
+ // Handler receives array of itmes and selector in parentheses
+ Ext.ComponentQuery.pseudos.titleRegex = function(components, selector) {
+     var i = 0, l = components.length, c, result = [], regex = new RegExp(selector);
+     for (; i < l; i++) {
+         c = components[i];
+         if (c.title && regex.test(c.title)) {
+             result.push(c);
+         }
+     }
+     return result;
+ }
+
+ var salesTabs = tabPanel.query('panel:titleRegex("sales\\s+for\\s+201[123]")');
+复制代码
+ 
+
+ 
+
+在容器中查询
+
+query方法查询过程中，默认会遍历所有组件。显然这个是十分影响效率的，把搜索范围限定起来，能使查询速度大大提高。还记得query方法的第二个参数吗？我们这样做：
+
+var btnRefresh = Ext.ComponentQuery.query('#btnRefresh', container); 
+另一种方式个人比较推荐，因为它看起来特别地干净利落：
+
+var btnRefresh = container.query('#btnRefresh'); 
+说到这里，就不能不提提Container类中用于查询组件的几个方法了。
+Container中的query方法、down方法、child方法和up方法，都是基于组件选择器而实现的组件查询方法，调用这些方法，可以很轻松地获取想要的组件。
+区别列举如下：
+
+query 后代组件 所有符合条件的组件集合
+
+down 后代组件 第一个符合条件的组件
+
+child 子组件 第一个符合条件的组件
+
+up 祖先组件 第一个符合条件的组件
+ * 
+ * 
+ * 
  * Provides searching of Components within Ext.ComponentManager (globally) or a specific
  * Ext.container.Container on the document with a similar syntax to a CSS selector.
  * Returns Array of matching Components, or empty Array.
+ * 
+ * 提供组件查询功能，在全局的Ext.组件管理器内，或是在一个具体的Ext.容器内，使用类似于CSS选择器的语法。
+ * 返回匹配的组件数组，如果没匹配的组件，则返回空数组。
  *
- * ## Basic Component lookup
+ * ## Basic Component lookup 基本的组件查找
  *
  * Components can be retrieved by using their {@link Ext.Component xtype}:
+ * 使用xtype查找
  *
  * - `component`
  * - `gridpanel`
@@ -21,6 +339,7 @@
  *     prevTextField = myField.previousNode('textfield(true)');
  *
  * You can search Components by their `id` or `itemId` property, prefixed with a #:
+ * 还可以使用id和itemId属性，进行查找
  *
  *     #myContainer
  *

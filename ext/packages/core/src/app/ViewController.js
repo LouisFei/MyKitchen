@@ -3,8 +3,12 @@
  * instance so it can manage the view and its child components. Each instance of the view
  * will have a new view controller, so the instances are isolated.
  * 
+ * 一个视图控制器是一个能够被附加一个具体视图实例的控制器，它能够管理视图和视图的孩子组件。
+ * 每一个视图实例，都有一个全新的视图控制器，以至于每个实例都是彼此独立的。
+ * 
  * When a view controller is specified on a view, events and other handlers that use strings as
  * values will be automatically connected with the appropriate methods in the controller's class.
+ * 当一个视图控制器被指定到一个视图上，事件使用字符串值定义的处理方法将自动关联到控制器中适合的方法上。
  *
  * Sample usage:
  * 

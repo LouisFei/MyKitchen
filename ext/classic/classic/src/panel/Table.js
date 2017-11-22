@@ -1,13 +1,14 @@
 /**
  * This class is the base class for both {@link Ext.tree.Panel TreePanel} and
  * {@link Ext.grid.Panel GridPanel}.
+ * 这个table类是TreePanel和GridPanel的基类。
  *
  * TablePanel aggregates:
  *
- *  - a Selection Model
- *  - a View
- *  - a Store
- *  - Ext.grid.header.Container
+ *  - a Selection Model 选择模型
+ *  - a View  视图
+ *  - a Store  数据仓库
+ *  - Ext.grid.header.Container  表头容器
  * 
  * @mixins Ext.grid.locking.Lockable
  */
@@ -37,6 +38,7 @@ Ext.define('Ext.panel.Table', {
     actionableModeCls: Ext.baseCSSPrefix + 'grid-actionable',
     noHeaderBordersCls: Ext.baseCSSPrefix + 'no-header-borders',
 
+    //默认数据绑定的属性，原来是store，这下明白了。
     defaultBindProperty: 'store',
 
     layout: 'fit',
@@ -97,6 +99,7 @@ Ext.define('Ext.panel.Table', {
     selection: null,
 
     /**
+     * 设置自动加载store数据源
      * @cfg {Boolean} [autoLoad=false]
      * Use `true` to load the store as soon as this component is fully constructed. It is
      * best to initiate the store load this way to allow this component and potentially
@@ -205,13 +208,15 @@ Ext.define('Ext.panel.Table', {
      */
 
     /**
+     * store 必填
      * @cfg {Ext.data.Store/String/Object} store (required)
      * The data source to which the grid / tree is bound. Acceptable values for this 
      * property are:
+     * 用于绑定的数据源。可接受的数据值如下：
      *
-     *   - **any {@link Ext.data.Store Store} class / subclass**
-     *   - **an {@link Ext.data.Store#storeId ID of a store}**
-     *   - **a {@link Ext.data.Store Store} config object**.  When passing a config you can 
+     *   - **any {@link Ext.data.Store Store} class / subclass**  store对象
+     *   - **an {@link Ext.data.Store#storeId ID of a store}**  store全局编号
+     *   - **a {@link Ext.data.Store Store} config object**.  store配置 When passing a config you can 
      *   specify the store type by alias.  Passing a config object with a store type will 
      *   dynamically create a new store of that type when the grid / tree is instantiated.
      *
@@ -227,7 +232,7 @@ Ext.define('Ext.panel.Table', {
      *         xtype: 'gridpanel',
      *         renderTo: document.body,
      *         store: {
-     *             type: 'customerstore',
+     *             type: 'customerstore', //别名
      *             data: [{
      *                 name: 'Foo'
      *             }]
