@@ -1,4 +1,9 @@
 /**
+ * Connection类封装了一个到页面原始域的连接，允许将请求发送到配置的URL或请求时指定的URL。
+ * 这个类所做的请求是异步的，并且会立即返回。
+ * 在请求调用之后，服务器的数据将不会立即可用于该语句。
+ * 要处理返回的数据，请在请求选项对象或事件侦听器中使用成功回调。
+ * 
  * The Connection class encapsulates a connection to the page's originating domain, allowing requests to be made either
  * to a configured URL, or to a URL specified at request time.
  *
@@ -218,6 +223,8 @@ Ext.define('Ext.data.Connection', {
     /**
      * @method request
      * Sends an HTTP (Ajax) request to a remote server.
+     * 
+     * 发送一个http(ajax)请求到远程服务器。
      *
      * **Important:** Ajax server requests are asynchronous, and this call will
      * return before the response has been received.

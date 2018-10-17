@@ -1,4 +1,6 @@
 /**
+ * AjaxProxy是向应用程序中获取数据的最广泛使用的方法之一。它使用AJAX请求从服务器加载数据，通常放置在Ext.data.Store中。
+ * 
  * AjaxProxy is one of the most widely-used ways of getting data into your application. It uses AJAX requests to load
  * data from the server, usually to be placed into a {@link Ext.data.Store Store}. Let's take a look at a typical setup.
  * Here we're going to set up a Store that has an AjaxProxy. To prepare, we'll also set up a {@link Ext.data.Model
@@ -348,6 +350,7 @@ Ext.define('Ext.data.proxy.Ajax', {
     
     /**
      * Fires a request
+     * 发出请求
      * @param {Ext.data.Request} request The request
      * @return {Ext.data.Request} The request
      * @private

@@ -1,0 +1,49 @@
+{
+    "name": "new",
+    "settings": {
+        "cmd": {
+            "license": "commercial"
+        },
+        "urlPrefixTemplate": "http://localhost:9008",
+        "urlPrefix": "http://localhost/",
+        "canvasControls": {
+            "viewportSize": {
+                "name": "Auto Expand",
+                "builtIn": true,
+                "height": null,
+                "width": null
+            }
+        },
+        "exportPath": "",
+        "buildShouldOverwriteIndex": true,
+        "generateArchitectVersion": true,
+        "spacesToIndent": 4,
+        "lineEnding": "CRLF",
+        "genTimestamps": false,
+        "cacheBust": false,
+        "installStatus": "Not Installed",
+        "lastBuildSelection": {
+            "value": "webBuild",
+            "display": "Build web app",
+            "buildPlatform": false
+        }
+    },
+    "xdsVersion": "4.2.2",
+    "xdsBuild": 282,
+    "schemaVersion": 1,
+    "upgradeVersion": 310000000001,
+    "framework": "ext65",
+    "viewOrderMap": {
+        "view": [],
+        "store": [],
+        "controller": [],
+        "model": [],
+        "resource": [
+            "f8bce924-8142-488e-bc49-d80f2d167cf5",
+            "bf135b30-94f5-4897-9d1e-dc88ec3647c6"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

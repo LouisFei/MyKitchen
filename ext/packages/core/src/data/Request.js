@@ -1,4 +1,8 @@
 /**
+ * 表示由任何Ext.data.proxy.Server子类创建的请求的简单类。
+ * 所有这个类所做的是标准化任何ServerProxy子类使用的请求表示，
+ * 它不包含任何实际的逻辑或自己执行请求。
+ * 
  * Simple class that represents a Request that will be made by any {@link Ext.data.proxy.Server} subclass.
  * All this class does is standardize the representation of a Request as used by any ServerProxy subclass,
  * it does not contain any actual logic or perform the request itself.
@@ -126,6 +130,7 @@ Ext.define('Ext.data.Request', {
     },
 
     /**
+     * 创建请求对象
      * Creates the Request object.
      * @param {Object} [config] Config object.
      */
@@ -134,6 +139,7 @@ Ext.define('Ext.data.Request', {
     },
     
     /**
+     * 获得参数集合中的单个参数
      * Gets a single param from the {@link #params}.
      * @param {String} key The key for the param.
      * @return {Object} The value for the param. `undefined` if it does not exist.
@@ -149,6 +155,7 @@ Ext.define('Ext.data.Request', {
     },
     
     /**
+     * 设置一个参数
      * Sets a single param value in the {@link #params}.
      * @param {String} key The key to set.
      * @param {Object} value The value to set.

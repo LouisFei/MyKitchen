@@ -543,7 +543,7 @@ Ext.define('MyKitchen.store.Navigation', {
                 { id: 'simple-grid', text: 'Simple Grid √', leaf: true },
                 { id: 'simple-grid2', text: 'Simple Grid2 √', leaf: true, iconCls: 'icon-direct-arg' },
                 { id: 'array-grid', text: 'Basic Grid √', leaf: true },
-                { id: 'grouped-grid', text: 'Grouped Grid', leaf: true },
+                { id: 'grouped-grid', text: 'Grouped Grid √', leaf: true },
                 { id: 'checkbox-selection', text: 'Checkbox Selection Model √', leaf: true },
                 { id: 'row-numberer', text: 'Row Numberer', leaf: true },
                 { id: 'grouped-header-grid', text: 'Grouped Header Grid', leaf: true },

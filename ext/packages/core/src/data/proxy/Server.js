@@ -1,6 +1,9 @@
 /**
  * ServerProxy is a superclass of {@link Ext.data.proxy.JsonP JsonPProxy} and {@link Ext.data.proxy.Ajax AjaxProxy}, and
  * would not usually be used directly.
+ * 
+ * ServerProxy是Ext.data.proxy.JsonP和Ext.data.proxy.Ajax的超类，通常不会直接使用。
+ * 
  * @protected
  */
 Ext.define('Ext.data.proxy.Server', {
@@ -22,6 +25,7 @@ Ext.define('Ext.data.proxy.Server', {
          * @cfg {String} [pageParam="page"]
          * The name of the 'page' parameter to send in a request. Defaults to 'page'. Set this to `''` if you don't
          * want to send a page parameter.
+         * 分页页码字段名称，默认为page，此参数传递到服务端
          */
         pageParam: 'page',
     
@@ -36,6 +40,7 @@ Ext.define('Ext.data.proxy.Server', {
          * @cfg {String} [limitParam="limit"]
          * The name of the 'limit' parameter to send in a request. Defaults to 'limit'. Set this to `''` if you don't
          * want to send a limit parameter.
+         * 分页每页显示条数字段名称，默认为limit，此参数传递到服务端
          */
         limitParam: 'limit',
     
@@ -131,12 +136,14 @@ Ext.define('Ext.data.proxy.Server', {
         /**
          * @cfg {Number} timeout
          * The number of milliseconds to wait for a response. Defaults to 30000 milliseconds (30 seconds).
+         * 请求超时时间
          */
         timeout : 30000,
     
         /**
          * @cfg {Object} api
          * Specific urls to call on CRUD action methods "create", "read", "update" and "destroy". Defaults to:
+         * 具体的网址可以调用CRUD操作方法“创建”，“读取”，“更新”和“销毁”。
          *
          *     api: {
          *         create  : undefined,
@@ -172,6 +179,8 @@ Ext.define('Ext.data.proxy.Server', {
          * @cfg {Object} extraParams
          * Extra parameters that will be included on every request. Individual requests with params of the same name
          * will override these params when they are in conflict.
+         * 
+         *
          */
         extraParams: {}
     },
@@ -205,6 +214,7 @@ Ext.define('Ext.data.proxy.Server', {
     },
 
     /**
+     * 设置一个额外参数
      * Sets a value in the underlying {@link #extraParams}.
      * @param {String} name The key for the new value
      * @param {Object} value The value
@@ -220,6 +230,7 @@ Ext.define('Ext.data.proxy.Server', {
     },
 
     /**
+     * 从Ext.data.operation.Operation创建一个Ext.data.Request对象。
      * Creates an {@link Ext.data.Request Request} object from {@link Ext.data.operation.Operation Operation}.
      *
      * This gets called from doRequest methods in subclasses of Server proxy.
